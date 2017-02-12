@@ -31,12 +31,12 @@ angular.module('app')
               .state('app.a_shownews', {
                   url: '/a_shownews',
                   templateUrl: 'tpl/a_shownews.html',
-                  resolve: {
-                    deps: ['$ocLazyLoad',
-                      function( $ocLazyLoad ){
-                        return $ocLazyLoad.load(['js/controllers/chart.js']);
-                    }]
-                  }
+                //   resolve: {
+                //     deps: ['$ocLazyLoad',
+                //       function( $ocLazyLoad ){
+                //         return $ocLazyLoad.load(['js/controllers/chart.js']);
+                //     }]
+                //   }
               })
               .state('app.a_sendnews', {
                   url: '/a_sendnews',
@@ -46,13 +46,13 @@ angular.module('app')
 
 
 
-              .state('app.login_in', {
-                  url: '/login_in',
-                  templateUrl: 'tpl/login_in.html',
+              .state('app.z_signin', {
+                  url: '/z_signin',
+                  templateUrl: 'tpl/z_signin.html',
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
-                        return $ocLazyLoad.load(['js/controllers/signin.js']);
+                        return $ocLazyLoad.load(['js/controllers/z_signin.js']);
                     }]
                   }
               })
