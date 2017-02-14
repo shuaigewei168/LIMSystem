@@ -10,11 +10,11 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
       // Try to login
       $http.post('../api/z_login.php', {email: $scope.user.email, password: $scope.user.password})
       .then(function(response) {
-        console.log(response);
-        if ( !response.data.user ) {
-          $scope.authError = 'Email or Password not right';
-        }else{
+        console.log(response.data.ret);
+        if ( response.data.ret = '0' ) {
           $state.go('app.a_sendnews');
+        }else{
+          $scope.authError = 'Email or Password not right';
         }
       }, function(x) {
         $scope.authError = 'Server Error';
