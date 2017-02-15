@@ -1,6 +1,6 @@
 <?php
 /***********************
-函数：inc.php
+函数：Inc.php
 输入：
 输出：
 
@@ -17,5 +17,6 @@ $content_type_args = explode(';', $_SERVER['CONTENT_TYPE']);
 if ($content_type_args[0] == 'application/json'){
     $_POST = json_decode(file_get_contents('php://input'),true);
 }
+
 
 ?>

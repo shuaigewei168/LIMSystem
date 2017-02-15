@@ -1,12 +1,12 @@
 <?php
 /***********************
-函数：mysql.php
+函数：Mysql.php
 输入：
 输出：
 
 功能：配置数据库
 ************************/
-include_once('inc.php');
+include_once('Inc.php');
 //创建对象并打开连接，最后一个参数是选择的数据库名称
 $mysqli = new mysqli(LOCALHOST,USERNAME,PASSWORD,DATABASE);
 //检查连接是否成功
