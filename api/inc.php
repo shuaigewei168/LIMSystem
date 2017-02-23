@@ -18,5 +18,4 @@ if ($content_type_args[0] == 'application/json'){
     $_POST = json_decode(file_get_contents('php://input'),true);
 }
 
-
 ?>

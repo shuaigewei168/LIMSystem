@@ -26,17 +26,16 @@ angular.module('app')
               })
 
 
-
               //资讯平台
               .state('app.a_shownews', {
                   url: '/a_shownews',
                   templateUrl: 'tpl/a_shownews.html',
-                //   resolve: {
-                //     deps: ['$ocLazyLoad',
-                //       function( $ocLazyLoad ){
-                //         return $ocLazyLoad.load(['js/controllers/chart.js']);
-                //     }]
-                //   }
+                  resolve: {
+                    deps: ['$ocLazyLoad',
+                      function( $ocLazyLoad ){
+                        return $ocLazyLoad.load(['js/controllers/a_shownews.js']);
+                    }]
+                  }
               })
               .state('app.a_sendnews', {
                   url: '/a_sendnews',
@@ -44,9 +43,12 @@ angular.module('app')
               })
 
 
-
-
-              .state('app.z_signin', {
+               //登录等访问
+              .state('access', {
+                  url: '/access',
+                  template: '<div ui-view class="fade-in-right-big smooth"></div>'
+              })   
+              .state('access.z_signin', {
                   url: '/z_signin',
                   templateUrl: 'tpl/z_signin.html',
                   resolve: {
@@ -54,23 +56,6 @@ angular.module('app')
                       function( $ocLazyLoad ){
                         return $ocLazyLoad.load(['js/controllers/z_signin.js']);
                     }]
-                  }
-              })
-
-
-
-              .state('app.table.grid', {
-                  url: '/grid',
-                  templateUrl: 'tpl/table_grid.html',
-                  resolve: {
-                      deps: ['$ocLazyLoad',
-                        function( $ocLazyLoad ){
-                          return $ocLazyLoad.load('ngGrid').then(
-                              function(){
-                                  return $ocLazyLoad.load('js/controllers/grid.js');
-                              }
-                          );
-                      }]
                   }
               })
       }

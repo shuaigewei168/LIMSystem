@@ -7,15 +7,12 @@
 功能：配置数据库
 ************************/
 include_once('Inc.php');
-//创建对象并打开连接，最后一个参数是选择的数据库名称
 $mysqli = new mysqli(LOCALHOST,USERNAME,PASSWORD,DATABASE);
-//检查连接是否成功
 if (mysqli_connect_errno()){
-	//注意mysqli_connect_error()新特性
 	printf('Unable to connect:%s\n',mysqli_connect_error());
 	exit;
 }
-// $mysqli->set_charset('UTF8');
+$mysqli->set_charset('UTF8');
 // $username='630880675@qq.com';
 // $password='linjiawei';
 // $level='1';

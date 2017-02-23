@@ -1,19 +1,14 @@
 'use strict';
-
-/* Controllers */
-  // signin controller
 app.controller('SigninFormController', ['$scope', '$http', '$state', function($scope, $http, $state) {
     $scope.user = {};
     $scope.authError = null;
     $scope.login = function() {
       $scope.authError = null;
       // Try to login
-      $http.post('../api/z_login.php', {email: $scope.user.email, password: $scope.user.password})
+      $http.post('../api/login.php', {email: $scope.user.email, password: $scope.user.password})
       .then(function(response) {
         console.log(response.data.ret);
-        if ( response.data.ret == '3' ) {
-          $state.go('app.a_shownews');
-        }else if( response.data.ret == '0' ) {
+        if( response.data.ret == '0' ) {
           $state.go('app.a_sendnews');
         }else{
           $scope.authError = 'Email or Password not right';

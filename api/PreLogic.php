@@ -8,7 +8,7 @@
 ************************/
 //判断是否有session
 session_start();
-if($_SESSION['Login']['autho'] != 1){
+if(@$_SESSION['Login']['autho'] != 1){
     $data['ret'] = -1;
     echo json_encode($data);
     exit;
