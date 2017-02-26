@@ -7,6 +7,7 @@
 功能：获取用户信息
 ************************/
 include_once('PreLogic.php');
+include_once('Mysql.php');
 //判断是否有session
 // session_start();
 if(@$_SESSION['Login']['autho'] == 1){
@@ -21,7 +22,7 @@ if(@$_SESSION['Login']['autho'] == 1){
 session_write_close();
 $data['ret'] = $ret;
 echo json_encode($data);
-// echo "asdasd";
+
 
 
 

@@ -5,13 +5,9 @@ app.controller('ShowNewsController', ['$scope', '$http', '$state', function($sco
     $http.post('../api/getuserinfo.php', {})
     .then(function(response) {
       if( response.data.ret == '-1' ) {
-        $state.go('app.a_sendnews');
-      }
-    else{
-        $scope.authError = 'Email or Password not right';
-      }
-      }, function(x) {
-        $scope.authError = 'Server Error';
+        $state.go('access.z_signin');
+      }}, function(x) {
+        
       });
   }])
 ;

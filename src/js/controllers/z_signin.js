@@ -11,10 +11,10 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
         if( response.data.ret == '0' ) {
           $state.go('app.a_sendnews');
         }else{
-          $scope.authError = 'Email or Password not right';
+          $scope.authError = '账号或者密码错误';
         }
       }, function(x) {
-        $scope.authError = 'Server Error';
+        $scope.authError = '服务器错误';
       });
     };
   }])

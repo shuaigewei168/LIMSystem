@@ -10,18 +10,17 @@ angular.module('app')
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');
 
-      // $scope.authError = null;
-      // $http.post('./api/getuserinfo.php', {})
-      // .then(function(response) {
-      //   console.log(response.data.data);
-      //   if( response.data.ret == '0' ) {
-      //     $state.go('app.a_sendnews');
-      //   }else{
-      //     $scope.authError = 'Email or Password not right';
-      //   }
-      // }, function(x) {
-      //   $scope.authError = 'Server Error';
-      // });
+
+    //  $http.post('../api/getuserinfo.php', {})
+    // .then(function(response) {
+    //   if( response.data.ret == '-1' ) {
+    //     $state.go('access.z_signin');
+    //   }else if(response.data.ret == '0'){
+    //     $scope.aside.username = response.data.data['UserName'];
+    //   }
+    //   }, function(x) {
+        
+    //   });
 
       // config
       $scope.app = {

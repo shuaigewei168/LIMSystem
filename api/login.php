@@ -10,6 +10,7 @@ include_once('Mysql.php');
 $username = $_POST['email'];
 $password = $_POST['password'];
 session_start();
+$_SESSION['Login'] = null;
 $sql = "select * from `userinformation` where `UserName`='".$username."' 
 and `PassWord`= '".$password."'";
 $result = $mysqli->query($sql);

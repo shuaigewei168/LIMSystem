@@ -1,4 +1,4 @@
-<div class="aside-wrap">
+<div class="aside-wrap" ng-controller="AsideController">
   <!-- if you want to use a custom scroll when aside fixed, use the slimScroll
     <div class="navi-wrap" ui-jq="slimScroll" ui-options="{height:'100%', size:'8px'}">
   -->
@@ -14,10 +14,10 @@
         <a href class="dropdown-toggle hidden-folded" dropdown-toggle>
           <span class="clear">
             <span class="block m-t-sm">
-              <strong class="font-bold text-lt">游客林</strong> 
+              <strong class="font-bold text-lt">{{realname}}</strong> 
               <b class="caret"></b>
             </span>
-            <span class="text-muted text-xs block">一个艺术家</span>
+            <span class="text-muted text-xs block">{{username}}</span>
           </span>
         </a>
         <!-- dropdown -->
@@ -32,20 +32,23 @@
             <progressbar value="80" type="white" class="progress-xs m-b-none dker"></progressbar>
           </li>
           <li>
-            <a href>等级</a>
+            <a href>
+              <span>等级：</span>
+              <span class="hidden-folded">{{level}}</span>
+            </a>
           </li>
-          <li>
+          <!--<li>
             <a ui-sref="app.page.profile">Profile</a>
-          </li>
+          </li>-->
           <li>
             <a href>
               <span class="badge bg-danger pull-right">3</span>
-              Notifications
+              通知
             </a>
           </li>
           <li class="divider"></li>
           <li>
-            <a ui-sref="app.z_signin">Logout</a>
+            <a ui-sref="access.z_signin">退出登录</a>
           </li>
         </ul>
         <!-- / dropdown -->
