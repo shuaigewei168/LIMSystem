@@ -39,11 +39,25 @@ angular.module('app')
               })
               .state('app.a_sendnews', {
                   url: '/a_sendnews',
-                  templateUrl: 'tpl/a_sendnews.html'
+                  templateUrl: 'tpl/a_sendnews.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('toaster').then(
+                              function(){
+                                 return $ocLazyLoad.load('js/controllers/a_sendnews.js');
+                              }
+                          );
+                      }]
+                  }
               })
+            //   .state('app.a_sendnews', {
+            //       url: '/a_sendnews',
+            //       templateUrl: 'tpl/a_sendnews.html'
+            //   })
 
 
-               //登录等访问
+               //登录,注册等访问
               .state('access', {
                   url: '/access',
                   template: '<div ui-view class="fade-in-right-big smooth"></div>'
@@ -56,6 +70,21 @@ angular.module('app')
                       function( $ocLazyLoad ){
                         return $ocLazyLoad.load(['js/controllers/z_signin.js']);
                     }]
+                  }
+              })
+              .state('access.z_register', {
+                  url: '/z_register',
+                  templateUrl: 'tpl/z_register.html',
+                  controller: 'RegisterFormController',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad ){
+                          return $ocLazyLoad.load('ui.select').then(
+                              function(){
+                                  return $ocLazyLoad.load('js/controllers/z_register.js');
+                              }
+                          );
+                      }]
                   }
               })
       }

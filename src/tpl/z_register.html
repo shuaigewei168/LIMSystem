@@ -1,0 +1,52 @@
+    <div class="container w-xxl w-auto-xs" ng-controller="RegisterFormController" ng-init="app.settings.container = false;">
+      <a href class="navbar-brand block m-t">{{app.name}}</a>
+      <div class="m-b-lg">
+        <form name="form" class="form-validation">
+          <div class="text-danger wrapper text-center" ng-show="authError">
+              {{authError}}
+          </div>
+          <div class="list-group list-group-sm">
+            <div class="list-group-item">
+              <input type="email"  placeholder="请输入邮箱用户名" class="form-control no-border"  ng-model="username" required>
+            </div>
+            <div class="list-group-item">
+               <input type="password" placeholder="请输入密码" class="form-control no-border" ng-model="password" required>
+            </div>
+            <div class="list-group-item">
+               <input  type='text' onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" placeholder="请输入QQ号" class="form-control no-border" ng-model="qqnumber" required>
+            </div>
+            <div class="list-group-item">
+              <input placeholder="请输入真实姓名" class="form-control no-border" ng-model="realname" required>
+            </div>
+            <div class="list-group-item">
+              <input type='text' onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" maxlength=11 onblur="if(/^1[3|4|5|7|8][0-9]{9}$/gi.test(this.value)?true:false){}else{alert('请输入正确的手机号码');this.value=null;}"
+                placeholder="请输入手机号码" class="form-control no-border" ng-model="phone" required>
+            </div>
+
+            <!--班级选择下拉框-->
+            <div class="list-group-item">
+              <ui-select  ng-model="class.selected" theme="bootstrap">
+                <ui-select-match style="border:none;box-shadow:none" placeholder="选择你的班级">{{$select.selected.classname}}</ui-select-match>
+                  <ui-select-choices repeat="item in class">
+                    <div ng-bind-html="item.classname"></div>
+                  </ui-select-choices>
+              </ui-select>
+            </div>
+
+            
+
+          </div>
+          <div class="checkbox m-b-md m-t-none">
+            <label class="i-checks">
+              <input type="checkbox"  ng-model="agree" required><i></i> 同意 <a tooltip-html-unsafe="自觉遵守自动化协会的规章制度，不随意违反纪律！">协会的规章制度</a>
+            </label>
+          </div>
+          <!--<button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="signup()" ng-disabled='form.$invalid'>注  册</button>-->
+          <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="signup()">注  册</button>
+          <div class="line line-dashed"></div>
+          <p class="text-center"><small>已经有账号？</small></p>
+          <a ui-sref="access.z_signin" class="btn btn-lg btn-default btn-block">登  录</a>
+        </form>
+      </div>
+      <!--<div class="text-center" ng-include="'tpl/blocks/page_footer.html'"></div>-->
+    </div>

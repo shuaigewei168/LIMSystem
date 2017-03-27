@@ -7,6 +7,7 @@
 功能：监测是否有登录
 ************************/
 //判断是否有session
+date_default_timezone_set("PRC");
 session_start();
 if(@$_SESSION['Login']['autho'] != 1){
     $data['ret'] = -1;

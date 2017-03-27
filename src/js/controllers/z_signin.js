@@ -7,9 +7,9 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
       // Try to login
       $http.post('../api/login.php', {email: $scope.user.email, password: $scope.user.password})
       .then(function(response) {
-        console.log(response.data.ret);
+        // console.log(response.data.ret);
         if( response.data.ret == '0' ) {
-          $state.go('app.a_sendnews');
+          $state.go('app.a_shownews');
         }else{
           $scope.authError = '账号或者密码错误';
         }

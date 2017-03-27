@@ -8,6 +8,7 @@
 ************************/
 include_once('PreLogic.php');
 include_once('Mysql.php');
+include_once('function.php');
 //判断是否有session
 // session_start();
 if(@$_SESSION['Login']['autho'] == 1){
@@ -17,7 +18,7 @@ if(@$_SESSION['Login']['autho'] == 1){
     $data['data'] = $userinfo;
     $ret=0;
 }else{
-    $ret=1;
+    errorreturn('获取用户信息失败');
 }
 session_write_close();
 $data['ret'] = $ret;

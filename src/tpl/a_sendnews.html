@@ -2,35 +2,47 @@
     app.settings.asideFolded = false; 
     app.settings.asideDock = false;
   ">
-  <!-- main -->
-  <div class="col">
-    <!-- main header -->
-    <div class="bg-light lter b-b wrapper-md">
-      <div class="row">
-        <div class="col-sm-6 col-xs-12">
-          <h1 class="m-n font-thin h3 text-black">Dashboard</h1>
-          <small class="text-muted">Welcome to angulr application</small>
-        </div>
-        <div class="col-sm-6 text-right hidden-xs">
-          <div class="inline m-r text-left">
-            <div class="m-b-xs">1290 <span class="text-muted">items</span></div>
-            <div ng-init="data1=[ 106,108,110,105,110,109,105,104,107,109,105,100,105,102,101,99,98 ]" 
-              ui-jq="sparkline" 
-              ui-options="{{data1}}, {type:'bar', height:20, barWidth:5, barSpacing:1, barColor:'#dce5ec'}" 
-              class="sparkline inline">loading...
-            </div>
-          </div>
-          <div class="inline text-left">
-            <div class="m-b-xs">$30,000 <span class="text-muted">revenue</span></div>
-            <div ng-init="data2=[ 105,102,106,107,105,104,101,99,98,109,105,100,108,110,105,110,109 ]" 
-              ui-jq="sparkline" 
-              ui-options="{{data2}}, {type:'bar', height:20, barWidth:5, barSpacing:1, barColor:'#dce5ec'}" 
-              class="sparkline inline">loading...
-            </div>
-          </div>
-        </div>
+<div class="wrapper-md" ng-controller="SentNewsController">
+  <toaster-container toaster-options="{'position-class': 'toast-top-full-width', 'close-button':false}"></toaster-container>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>标题</label>
+        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入标题......" ng-model="toaster.title">
+      </div>
+
+      <div class="form-group">
+        <label>内容</label>
+        <textarea class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入内容......" rows="5" ng-model="toaster.text"></textarea>
       </div>
     </div>
-  </div>  
-  <!-- / right col -->
+    <div class="col-sm-6">
+      <label>类型</label>
+      <div class="radio">
+        <label class="i-checks">
+          <input type="radio" name="message" ng-model="toaster.type" value="message" >
+          <i></i>
+          消息
+        </label>
+      </div>
+      <div class="radio">
+        <label class="i-checks">
+          <input type="radio" name="task" ng-model="toaster.type" value="task">
+          <i></i>
+          任务
+        </label>
+      </div>
+      <div class="radio">
+        <label class="i-checks">
+          <input type="radio" name="article" ng-model="toaster.type" value="article">
+          <i></i>
+          文章
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-info" ng-click="pop()">发  表</button>
+
+</div> 
 </div>
