@@ -2,25 +2,32 @@
 app.controller('ShowNewsController', ['$scope', '$http', '$state', function($scope, $http, $state) {
     $scope.user = {};
     $scope.authError = null;
-    $http.post('../api/getuserinfo.php', {})
-    .then(function(response) {
-      if( response.data.ret == '-1' ) {
-        $state.go('access.z_signin');
-      }}, function(x) {
+    // $http.post('../api/getuserinfo.php', {})
+    // .then(function(response) {
+    //   if( response.data.ret == '-1' ) {
+    //     $state.go('access.z_signin');
+    //   }}, function(x) {
         
-      });
+    //   });
       // 获取消息
       $http.post('../api/shownews.php', {
           
       })
       .then(function(response) {
-        console.log(response.data.ret);
+        // console.log(response.data.data.task);
       if( response.data.ret == '-1' ) {
-          // $state.go('access.z_signin');
-           console.log(response.data.data);
+          $state.go('access.z_signin');
       }else if(response.data.ret == '0'){
-          // $state.go('app.a_shownews');  
-          console.log(response.data.data); 
+          $scope.tasks = response.data.data.task;  
+          $scope.messages = response.data.data.message; 
+        //   if($scope.messages.length < 4){
+        //       for(var i=$scope.messages.length;i<4;i++ )
+        //       $scope.messages[i].NoticTitle = '';
+        //       $scope.messages[i].NoticText = '';
+        //   }
+          console.log($scope.messages);
+          $scope.articles = response.data.data.article; 
+          $scope.questions = response.data.data.question; 
       }
       }, function(x) {
           

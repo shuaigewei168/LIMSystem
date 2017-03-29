@@ -13,7 +13,7 @@ error_reporting(1);
 $type = $_POST['type'];
 $text = $_POST['text'];
 $title = $_POST['title'];
-$shorttext = substr($text , 0 , 30);
+$shorttext = substr($text , 0 , 60);
 $noticuuid = $type.time();
 session_start();
 $sql="insert into notics(NoticTitle,NoticText,NoticType,NoticUUID,SaveTime,NoticAuthor) values(?,?,?,?,?,?)";

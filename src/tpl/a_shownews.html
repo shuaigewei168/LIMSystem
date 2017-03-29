@@ -25,31 +25,13 @@
       <div class="panel b-a">
         <div class="panel-heading b-b b-light">
           <!--<span class="badge bg-warning pull-right">10</span>-->
-          <a href class="font-bold">消息公告</a>
+          <a href class="font-bold">任务公告</a>
         </div>
         <ul class="list-group list-group-lg no-bg auto">
-          <li class="list-group-item clearfix">
+          <li ng-repeat = " task in tasks | limitTo:4" class="list-group-item clearfix">
             <span class="clear">
-              <span>广东设计比赛</span>
-              <small class="text-muted clear text-ellipsis">恭喜林家伟同学，在广东设计大赛中荣获十等奖，收到习大大的接见，恭喜林家伟同学，在广东设计大赛中荣获十等奖，收到习大大的接见，恭喜林家伟同学，在广东设计大赛中荣获十等奖，收到习大大的接见</small>
-            </span>
-          </li>
-          <li class="list-group-item clearfix">
-            <span class="clear">
-              <span>全国电子大赛</span>
-              <small class="text-muted clear text-ellipsis">10月10号国庆节期间，欢迎各位积极参加全国电子竞技大赛，LOL</small>
-            </span>
-          </li>
-          <li class="list-group-item clearfix">
-            <span class="clear">
-              <span>马拉松比赛</span>
-              <small class="text-muted clear text-ellipsis">因为马拉松进行时间过久，所以奥委会决定取消马拉松比赛项目</small>
-            </span>
-          </li>
-          <li class="list-group-item clearfix">
-            <span class="clear">
-              <span>大蛇王</span>
-              <small class="text-muted clear text-ellipsis">印度的大神们最近发现一条直径xxxx好长的大蛇，当地称为蛇王</small>
+              <span>{{task.NoticTitle}}</span>
+              <small class="text-muted clear text-ellipsis">{{task.NoticText}}</small>
             </span>
           </li>
         </ul>
@@ -61,31 +43,13 @@
       <div class="panel b-a">
         <div class="panel-heading b-b b-light">
           <!--<span class="badge bg-warning pull-right">10</span>-->
-          <a href class="font-bold">任务公告</a>
+          <a href class="font-bold">消息公告</a>
        </div>
         <ul class="list-group list-group-lg no-bg auto">
-          <li class="list-group-item clearfix">
+          <li ng-repeat = " message in messages | limitTo:4" class="list-group-item clearfix">
             <span class="clear">
-              <span>广东设计比赛</span>
-              <small class="text-muted clear text-ellipsis">恭喜林家伟同学，在广东设计大赛中荣获十等奖，收到习大大的接见，恭喜林家伟同学，在广东设计大赛中荣获十等奖，收到习大大的接见，恭喜林家伟同学，在广东设计大赛中荣获十等奖，收到习大大的接见</small>
-            </span>
-          </li>
-          <li class="list-group-item clearfix">
-            <span class="clear">
-              <span>全国电子大赛</span>
-              <small class="text-muted clear text-ellipsis">10月10号国庆节期间，欢迎各位积极参加全国电子竞技大赛，LOL</small>
-            </span>
-          </li>
-          <li class="list-group-item clearfix">
-            <span class="clear">
-              <span>马拉松比赛</span>
-              <small class="text-muted clear text-ellipsis">因为马拉松进行时间过久，所以奥委会决定取消马拉松比赛项目</small>
-            </span>
-          </li>
-          <li class="list-group-item clearfix">
-            <span class="clear">
-              <span>大蛇王</span>
-              <small class="text-muted clear text-ellipsis">印度的大神们最近发现一条直径xxxx好长的大蛇，当地称为蛇王</small>
+              <span>{{message.NoticTitle}}</span>
+              <small class="text-muted clear text-ellipsis">{{message.NoticText}}</small>
             </span>
           </li>
         </ul>
@@ -97,31 +61,13 @@
       <div class="panel b-a">
         <div class="panel-heading b-b b-light">
           <!--<span class="badge bg-warning pull-right">10</span>-->
-          <a href class="font-bold">博文</a>
+          <a href class="font-bold">文章公告</a>
         </div>
         <ul class="list-group list-group-lg no-bg auto">
-          <li class="list-group-item clearfix">
+          <li ng-repeat = " article in articles | limitTo:4" class="list-group-item clearfix">
             <span class="clear">
-              <span>广东设计比赛</span>
-              <small class="text-muted clear text-ellipsis">恭喜林家伟同学，在广东设计大赛中荣获十等奖，收到习大大的接见，恭喜林家伟同学，在广东设计大赛中荣获十等奖，收到习大大的接见，恭喜林家伟同学，在广东设计大赛中荣获十等奖，收到习大大的接见</small>
-            </span>
-          </li>
-          <li class="list-group-item clearfix">
-            <span class="clear">
-              <span>全国电子大赛</span>
-              <small class="text-muted clear text-ellipsis">10月10号国庆节期间，欢迎各位积极参加全国电子竞技大赛，LOL</small>
-            </span>
-          </li>
-          <li class="list-group-item clearfix">
-            <span class="clear">
-              <span>马拉松比赛</span>
-              <small class="text-muted clear text-ellipsis">因为马拉松进行时间过久，所以奥委会决定取消马拉松比赛项目</small>
-            </span>
-          </li>
-          <li class="list-group-item clearfix">
-            <span class="clear">
-              <span>大蛇王</span>
-              <small class="text-muted clear text-ellipsis">印度的大神们最近发现一条直径xxxx好长的大蛇，当地称为蛇王</small>
+              <span>{{article.NoticTitle}}</span>
+              <small class="text-muted clear text-ellipsis">{{article.NoticText}}</small>
             </span>
           </li>
         </ul>
@@ -133,47 +79,17 @@
       <div class="panel b-a">
         <div class="panel-heading b-b b-light">
           <!--<span class="badge bg-warning pull-right">10</span>-->
-          <a href class="font-bold">时钟，天气</a>
+          <a href class="font-bold">问题公告</a>
         </div>
         <ul class="list-group list-group-lg no-bg auto">
-          <li class="list-group-item clearfix">
+          <li class="list-group-item clearfix" ng-repeat = " question in questions | limitTo:4">
             <span class="pull-left thumb-sm avatar m-r">
               <img src="img/a4.jpg" alt="...">
               <i class="on b-white bottom"></i>
             </span>
             <span class="clear">
-              <span>Chris Fox</span>
-              <small class="text-muted clear text-ellipsis">What's up, buddy</small>
-            </span>
-          </li>
-          <li class="list-group-item clearfix">
-            <span class="pull-left thumb-sm avatar m-r">
-              <img src="img/a5.jpg" alt="...">
-              <i class="on b-white bottom"></i>
-            </span>
-            <span class="clear">
-              <span>Amanda Conlan</span>
-              <small class="text-muted clear text-ellipsis">Come online and we need talk about the plans that we have discussed</small>
-            </span>
-          </li>
-          <li class="list-group-item clearfix">
-            <span class="pull-left thumb-sm avatar m-r">
-              <img src="img/a6.jpg" alt="...">
-              <i class="busy b-white bottom"></i>
-            </span>
-            <span class="clear">
-              <span>Dan Doorack</span>
-              <small class="text-muted clear text-ellipsis">Hey, Some good news</small>
-            </span>
-          </li>
-          <li class="list-group-item clearfix">
-            <span class="pull-left thumb-sm avatar m-r">
-              <img src="img/a7.jpg" alt="...">
-              <i class="away b-white bottom"></i>
-            </span>
-            <span class="clear">
-              <span>Lauren Taylor</span>
-              <small class="text-muted clear text-ellipsis">Nice to talk with you.</small>
+              <span>{{question.NoticTitle}}</span>
+              <small class="text-muted clear text-ellipsis">{{question.NoticText}}</small>
             </span>
           </li>
         </ul>

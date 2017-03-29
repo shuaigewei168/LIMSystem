@@ -8,13 +8,13 @@ app.controller('SentNewsController', ['$scope', '$http', '$state','toaster', fun
         text: ''
     };
     // 获取用户信息
-    $http.post('../api/getuserinfo.php', {})
-    .then(function(response) {
-      if( response.data.ret == '-1' ) {
-        $state.go('access.z_signin');
-      }}, function(x) {
+    // $http.post('../api/getuserinfo.php', {})
+    // .then(function(response) {
+    //   if( response.data.ret == '-1' ) {
+    //     $state.go('access.z_signin');
+    //   }}, function(x) {
         
-      });
+    //   });
     $scope.pop = function(){
         // console.log($scope.toaster.type);
         if($scope.toaster.type == '' ){

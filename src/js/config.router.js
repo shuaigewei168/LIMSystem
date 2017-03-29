@@ -37,6 +37,16 @@ angular.module('app')
                     }]
                   }
               })
+              .state('app.a_shownews', {
+                  url: '/a_shownews',
+                  templateUrl: 'tpl/a_shownews.html',
+                  resolve: {
+                    deps: ['$ocLazyLoad',
+                      function( $ocLazyLoad ){
+                        return $ocLazyLoad.load(['js/controllers/a_shownews.js']);
+                    }]
+                  }
+              })
               .state('app.a_sendnews', {
                   url: '/a_sendnews',
                   templateUrl: 'tpl/a_sendnews.html',
