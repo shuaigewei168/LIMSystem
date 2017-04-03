@@ -37,7 +37,7 @@ app.controller('SentNewsController', ['$scope', '$http', '$state','toaster', fun
         if( response.data.ret == '-1' ) {
             $state.go('access.z_signin');
         }else if(response.data.ret == '0'){
-            $state.go('app.a_shownews');   
+            $state.go('app.a_shownews',{type:'all'});   
         }
         }, function(x) {
             

@@ -17,7 +17,7 @@ angular.module('app')
       function ($stateProvider,   $urlRouterProvider) {
           
           $urlRouterProvider
-              .otherwise('/app/a_shownews');
+              .otherwise('/app/a_shownews/all');
           $stateProvider
               .state('app', {
                   abstract: true,
@@ -28,7 +28,7 @@ angular.module('app')
 
               //资讯平台
               .state('app.a_shownews', {
-                  url: '/a_shownews',
+                  url: '/a_shownews/{type}',
                   templateUrl: 'tpl/a_shownews.html',
                   resolve: {
                     deps: ['$ocLazyLoad',
@@ -37,16 +37,16 @@ angular.module('app')
                     }]
                   }
               })
-              .state('app.a_shownews', {
-                  url: '/a_shownews',
-                  templateUrl: 'tpl/a_shownews.html',
-                  resolve: {
-                    deps: ['$ocLazyLoad',
-                      function( $ocLazyLoad ){
-                        return $ocLazyLoad.load(['js/controllers/a_shownews.js']);
-                    }]
-                  }
-              })
+            //   .state('app.a_shownews', {
+            //       url: '/a_shownews',
+            //       templateUrl: 'tpl/a_shownews.html',
+            //       resolve: {
+            //         deps: ['$ocLazyLoad',
+            //           function( $ocLazyLoad ){
+            //             return $ocLazyLoad.load(['js/controllers/a_shownews.js']);
+            //         }]
+            //       }
+            //   })
               .state('app.a_sendnews', {
                   url: '/a_sendnews',
                   templateUrl: 'tpl/a_sendnews.html',

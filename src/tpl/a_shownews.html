@@ -21,7 +21,7 @@
   <!-- / carousel --> 
 
   <!--消息公告-->
-  <div class="col-sm-6">
+  <div class="col-sm-6" ng-show="isshow">
       <div class="panel b-a">
         <div class="panel-heading b-b b-light">
           <!--<span class="badge bg-warning pull-right">10</span>-->
@@ -39,7 +39,7 @@
     </div>
 
   <!--任务公告-->
-  <div class="col-sm-6">
+  <div class="col-sm-6" ng-show="isshow">
       <div class="panel b-a">
         <div class="panel-heading b-b b-light">
           <!--<span class="badge bg-warning pull-right">10</span>-->
@@ -57,13 +57,13 @@
     </div>
 
   <!--博文-->
-  <div class="col-sm-6">
+  <div class="col-sm-6" ng-show="isshow">
       <div class="panel b-a">
         <div class="panel-heading b-b b-light">
           <!--<span class="badge bg-warning pull-right">10</span>-->
           <a href class="font-bold">文章公告</a>
         </div>
-        <ul class="list-group list-group-lg no-bg auto">
+        <ul  class="list-group list-group-lg no-bg auto">
           <li ng-repeat = " article in articles | limitTo:4" class="list-group-item clearfix">
             <span class="clear">
               <span>{{article.NoticTitle}}</span>
@@ -75,7 +75,7 @@
     </div>
 
   <!--时钟，天气-->
-  <div class="col-sm-6">
+  <div class="col-sm-6" ng-show="isshow">
       <div class="panel b-a">
         <div class="panel-heading b-b b-light">
           <!--<span class="badge bg-warning pull-right">10</span>-->
@@ -95,4 +95,77 @@
         </ul>
       </div>       
     </div>
+
+<!--单独的消息-->
+      <!-- modal -->
+      <div ng-controller="ShowModalControler" class="panel b-a">
+          <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title">确认删除?</h3>
+            </div>
+            <div class="modal-footer">                  
+                <button class="btn btn-default" ng-click="cancel()">取消删除</button>
+                <button class="btn btn-primary" ng-click="ok()">确认删除</button>
+            </div>
+          </script>
+      </div>
+      <!-- /modal -->
+<div class="wrapper-md" ng-show="!isshow" ng-controller="ShowModalControler">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      {{notictypes}}
+    </div>
+    <div class="panel-body b-b b-light">
+      关键字搜索: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
+    </div>
+    <div>
+      <table class="table m-b-none" ui-jq="footable" data-filter="#filter" data-page-size="8">
+        <thead>
+          <tr>
+              <th data-toggle="true">
+                  标题
+              </th>
+              <th>
+                  内容
+              </th>
+              <th data-hide="phone">
+                  作者
+              </th>
+              <th data-hide="phone">
+                  发表时间
+              </th>
+              <th data-hide="phone">
+                  操作
+              </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat = " onenotic in notictype">
+              <td>{{onenotic.NoticTitle}}</td>
+              <td><a href>{{onenotic.NoticText}}</a></td>
+              <td>{{onenotic.NoticAuthor}}</td>
+              <td data-value={{onenotic.NoticUUID}}>{{onenotic.SaveTime}}</td>
+              <td style="margin:0px;">
+                <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="open('sm')" style="margin:0px;" ui-toggle-class="show inline" target='#{{onenotic.NoticID}}'>
+                  <span class="text"><i class="fa fa-trash-o"></i>删除</span>
+                  <span class="text-active"><i class="fa fa-trash-o"></i>删除中</span>
+                </button> 
+                <i class="fa fa-spin fa-spinner hide" id={{onenotic.NoticID}}></i>
+                <!--<button class="btn m-b-xs btn-sm btn-danger btn-addon" style="margin:0px;"><i class="fa fa-trash-o"></i>删除</button>-->
+                <button class="btn m-b-xs btn-sm btn-info btn-addon" style="margin:0px;"><i class="fa fa-play"></i>阅读</button>
+              </td>
+          </tr>
+        </tbody>
+        <tfoot class="hide-if-no-paging">
+          <tr>
+              <td colspan="5" class="text-center">
+                  <ul class="pagination"></ul>
+              </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+    
 </div>

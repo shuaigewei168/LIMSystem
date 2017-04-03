@@ -27,7 +27,7 @@ app.controller('RegisterFormController', ['$scope', '$http', '$state', function(
         if (response.data.ret != '0' ) {
           $scope.authError = response.data.data;
         }else{
-          $state.go('app.a_shownews');
+          $state.go('app.a_shownews',{type:'all'});
         }
       }, function(x) {
         $scope.authError = '服务器错误';

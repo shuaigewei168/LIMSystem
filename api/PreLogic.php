@@ -8,6 +8,7 @@
 ************************/
 //判断是否有session
 date_default_timezone_set("PRC");
+session_write_close();
 session_start();
 if(@$_SESSION['Login']['autho'] != 1){
     $data['ret'] = -1;

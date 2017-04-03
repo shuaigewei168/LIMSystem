@@ -9,7 +9,7 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
       .then(function(response) {
         // console.log(response.data.ret);
         if( response.data.ret == '0' ) {
-          $state.go('app.a_shownews');
+          $state.go('app.a_shownews',{type:'all'});
         }else{
           $scope.authError = '账号或者密码错误';
         }
