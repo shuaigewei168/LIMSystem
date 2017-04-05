@@ -5,33 +5,10 @@ app.controller('ShowNewsController', ['$scope', '$http', '$state','$stateParams'
     $scope.isshow = false;
     $scope.typeshow = $stateParams.type ; //消息类型选择
 
-    // 删除消息
-    $scope.deletethis = function(noticID){
-      console.log(noticID);
-          // 获取消息
-      // $http.post('../api/newsopt.php', {
-      //     opt : 'delete',
-      //     noticID : noticID
-      // })
-      // .then(function(response) {
-    
-      // }, function(x) {
-          
-      // });
-    };
-
     // 阅读消息
     $scope.readthis = function(){
 
     };
-
-    // $http.post('../api/getuserinfo.php', {})
-    // .then(function(response) {
-    //   if( response.data.ret == '-1' ) {
-    //     $state.go('access.z_signin');
-    //   }}, function(x) {
-        
-    //   });
 
 
     // 获取消息
@@ -75,25 +52,24 @@ app.controller('ShowNewsController', ['$scope', '$http', '$state','$stateParams'
     });
   }]);
 
- app.controller('ShowModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
-    $scope.items = items;
-    $scope.selected = {
-      item: $scope.items[0]
+// 弹框
+ app.controller('ShowModalInstanceCtrl', ['$scope', '$modalInstance', 'items','$state','$stateParams','$window', '$http', function($scope, $modalInstance, items, $state,$stateParams,$window,$http) {
+    // 点击确认删除
+    $scope.ok = function (noticID) {
+      $modalInstance.close('ok');
+      $state.go('app.a_shownews',{type:$stateParams.type});
     };
-
-    $scope.ok = function () {
-      console.log('ok');
-      $modalInstance.dismiss('ok');
-    };
-
+    //点击取消删除
     $scope.cancel = function () {
+      $state.go('app.a_shownews',{type:$stateParams.type});
+      // $window.location.reload();
       $modalInstance.dismiss('cancel');
     };
-  }])
-  ; 
-  app.controller('ShowModalControler', ['$scope', '$modal', '$log', function($scope, $modal, $log) {
-    $scope.items = ['item1', 'item2', 'item3'];
-    $scope.open = function (size) {
+  }]); 
+
+
+  app.controller('ShowModalControler', ['$scope', '$modal', '$log','$state','$stateParams', function($scope, $modal, $log, $state,$stateParams) {
+    $scope.open = function (size,noticID) {
       var modalInstance = $modal.open({
         templateUrl: 'myModalContent.html',
         controller: 'ShowModalInstanceCtrl',
@@ -106,10 +82,22 @@ app.controller('ShowNewsController', ['$scope', '$http', '$state','$stateParams'
       });
 
       modalInstance.result.then(function (selectedItem) {
+        // 确认删除
         $scope.selected = selectedItem;
+        $http.post('../api/newsopt.php', {
+            opt : 'delete',
+            noticID : noticID
+        })
+        .then(function(response) {
+      
+        }, function(x) {
+            
+        });
+        // 取消删除
       }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
+
       });
     };
+
   }])
   ;

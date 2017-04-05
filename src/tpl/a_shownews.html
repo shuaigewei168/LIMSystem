@@ -97,19 +97,19 @@
     </div>
 
 <!--单独的消息-->
-      <!-- modal -->
-      <div ng-controller="ShowModalControler" class="panel b-a">
-          <script type="text/ng-template" id="myModalContent.html">
-            <div class="modal-header">
-                <h3 class="modal-title">确认删除?</h3>
-            </div>
-            <div class="modal-footer">                  
-                <button class="btn btn-default" ng-click="cancel()">取消删除</button>
-                <button class="btn btn-primary" ng-click="ok()">确认删除</button>
-            </div>
-          </script>
+<!-- modal -->
+<div ng-controller="ShowModalControler" class="panel b-a">
+    <script type="text/ng-template" id="myModalContent.html">
+      <div class="modal-header">
+          <h3 class="modal-title">确认删除?</h3>
       </div>
-      <!-- /modal -->
+      <div class="modal-footer">                  
+          <button class="btn btn-default" ng-click="cancel()">取消删除</button>
+          <button class="btn btn-primary" ng-click="ok()">确认删除</button>
+      </div>
+    </script>
+</div>
+<!-- /modal -->
 <div class="wrapper-md" ng-show="!isshow" ng-controller="ShowModalControler">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -146,12 +146,12 @@
               <td>{{onenotic.NoticAuthor}}</td>
               <td data-value={{onenotic.NoticUUID}}>{{onenotic.SaveTime}}</td>
               <td style="margin:0px;">
-                <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="open('sm')" style="margin:0px;" ui-toggle-class="show inline" target='#{{onenotic.NoticID}}'>
+                <!--<button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="open('sm')" style="margin:0px;" ui-toggle-class="show inline" target='#{{onenotic.NoticID}}'>
                   <span class="text"><i class="fa fa-trash-o"></i>删除</span>
                   <span class="text-active"><i class="fa fa-trash-o"></i>删除中</span>
                 </button> 
-                <i class="fa fa-spin fa-spinner hide" id={{onenotic.NoticID}}></i>
-                <!--<button class="btn m-b-xs btn-sm btn-danger btn-addon" style="margin:0px;"><i class="fa fa-trash-o"></i>删除</button>-->
+                <i class="fa fa-spin fa-spinner hide" id={{onenotic.NoticID}}></i>-->
+                <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="open('sm','{{onenotic.NoticID}}')" style="margin:0px;"><i class="fa fa-trash-o"></i>删除</button>
                 <button class="btn m-b-xs btn-sm btn-info btn-addon" style="margin:0px;"><i class="fa fa-play"></i>阅读</button>
               </td>
           </tr>
