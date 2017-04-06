@@ -13,7 +13,7 @@ function logresult($msg){
     $txt = '../log.txt';
     $fp = fopen($txt,"a+");
     //写入内容
-    fwrite($fp,$msg."   时间：".date('Y-m-d H:i:s').'\r\n');
+    fwrite($fp,$msg."   时间：".date('Y-m-d H:i:s')."\r\n");
     //关闭资源
     fclose($fp);
 }

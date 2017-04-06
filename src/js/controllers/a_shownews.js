@@ -57,7 +57,7 @@ app.controller('ShowNewsController', ['$scope', '$http', '$state','$stateParams'
     // 点击确认删除
     $scope.ok = function (noticID) {
       $modalInstance.close('ok');
-      $state.go('app.a_shownews',{type:$stateParams.type});
+      $window.location.reload();
     };
     //点击取消删除
     $scope.cancel = function () {
@@ -68,7 +68,7 @@ app.controller('ShowNewsController', ['$scope', '$http', '$state','$stateParams'
   }]); 
 
 
-  app.controller('ShowModalControler', ['$scope', '$modal', '$log','$state','$stateParams', function($scope, $modal, $log, $state,$stateParams) {
+  app.controller('ShowModalControler', ['$scope', '$modal', '$log','$state','$http', function($scope, $modal, $log, $state,$http) {
     $scope.open = function (size,noticID) {
       var modalInstance = $modal.open({
         templateUrl: 'myModalContent.html',

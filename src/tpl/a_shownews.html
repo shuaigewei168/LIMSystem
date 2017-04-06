@@ -21,11 +21,11 @@
   <!-- / carousel --> 
 
   <!--消息公告-->
-  <div class="col-sm-6" ng-show="isshow">
+  <div class="col-sm-6" style="margin-top:10px" ng-show="isshow">
       <div class="panel b-a">
         <div class="panel-heading b-b b-light">
           <!--<span class="badge bg-warning pull-right">10</span>-->
-          <a href class="font-bold">任务公告</a>
+          <a ui-sref="app.a_shownews({type:'task'})" class="font-bold">任务公告</a>
         </div>
         <ul class="list-group list-group-lg no-bg auto">
           <li ng-repeat = " task in tasks | limitTo:4" class="list-group-item clearfix">
@@ -39,11 +39,11 @@
     </div>
 
   <!--任务公告-->
-  <div class="col-sm-6" ng-show="isshow">
+  <div class="col-sm-6"  style="margin-top:10px" ng-show="isshow">
       <div class="panel b-a">
         <div class="panel-heading b-b b-light">
           <!--<span class="badge bg-warning pull-right">10</span>-->
-          <a href class="font-bold">消息公告</a>
+          <a ui-sref="app.a_shownews({type:'message'})" class="font-bold">消息公告</a>
        </div>
         <ul class="list-group list-group-lg no-bg auto">
           <li ng-repeat = " message in messages | limitTo:4" class="list-group-item clearfix">
@@ -57,11 +57,11 @@
     </div>
 
   <!--博文-->
-  <div class="col-sm-6" ng-show="isshow">
+  <div class="col-sm-6" style="margin-top:10px" ng-show="isshow">
       <div class="panel b-a">
         <div class="panel-heading b-b b-light">
           <!--<span class="badge bg-warning pull-right">10</span>-->
-          <a href class="font-bold">文章公告</a>
+          <a ui-sref="app.a_shownews({type:'article'})" class="font-bold">文章公告</a>
         </div>
         <ul  class="list-group list-group-lg no-bg auto">
           <li ng-repeat = " article in articles | limitTo:4" class="list-group-item clearfix">
@@ -75,11 +75,11 @@
     </div>
 
   <!--时钟，天气-->
-  <div class="col-sm-6" ng-show="isshow">
+  <div class="col-sm-6" style="margin-top:10px" ng-show="isshow">
       <div class="panel b-a">
         <div class="panel-heading b-b b-light">
           <!--<span class="badge bg-warning pull-right">10</span>-->
-          <a href class="font-bold">问题公告</a>
+          <a ui-sref="app.a_shownews({type:'question'})" class="font-bold">问题公告</a>
         </div>
         <ul class="list-group list-group-lg no-bg auto">
           <li class="list-group-item clearfix" ng-repeat = " question in questions | limitTo:4">
@@ -114,6 +114,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       {{notictypes}}
+     <i class="icon-action-undo" style='float: right'><a ui-sref="app.a_shownews({type:'all'})">返回</a></i>
     </div>
     <div class="panel-body b-b b-light">
       关键字搜索: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
@@ -125,7 +126,7 @@
               <th data-toggle="true">
                   标题
               </th>
-              <th>
+              <th data-hide="phone">
                   内容
               </th>
               <th data-hide="phone">
@@ -134,7 +135,7 @@
               <th data-hide="phone">
                   发表时间
               </th>
-              <th data-hide="phone">
+              <th data-hide="">
                   操作
               </th>
           </tr>
