@@ -37,16 +37,16 @@ angular.module('app')
                     }]
                   }
               })
-            //   .state('app.a_shownews', {
-            //       url: '/a_shownews',
-            //       templateUrl: 'tpl/a_shownews.html',
-            //       resolve: {
-            //         deps: ['$ocLazyLoad',
-            //           function( $ocLazyLoad ){
-            //             return $ocLazyLoad.load(['js/controllers/a_shownews.js']);
-            //         }]
-            //       }
-            //   })
+              .state('app.a_shownewsdetail', {
+                  url: '/a_shownewsdetail/{noticID}',
+                  templateUrl: 'tpl/a_shownewsdetail.html',
+                  resolve: {
+                    deps: ['$ocLazyLoad',
+                      function( $ocLazyLoad ){
+                        return $ocLazyLoad.load(['js/controllers/a_shownewsdetail.js']);
+                    }]
+                  }
+              })
               .state('app.a_sendnews', {
                   url: '/a_sendnews',
                   templateUrl: 'tpl/a_sendnews.html',
@@ -55,7 +55,11 @@ angular.module('app')
                         function( $ocLazyLoad){
                           return $ocLazyLoad.load('toaster').then(
                               function(){
-                                 return $ocLazyLoad.load('js/controllers/a_sendnews.js');
+                                 return $ocLazyLoad.load('textAngular').then(
+                                    function(){
+                                        return $ocLazyLoad.load('js/controllers/a_sendnews.js');
+                                    }
+                                 );
                               }
                           );
                       }]

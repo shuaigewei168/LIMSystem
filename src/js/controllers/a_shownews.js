@@ -6,8 +6,8 @@ app.controller('ShowNewsController', ['$scope', '$http', '$state','$stateParams'
     $scope.typeshow = $stateParams.type ; //消息类型选择
 
     // 阅读消息
-    $scope.readthis = function(){
-
+    $scope.read = function(noticID){
+      $state.go('app.a_shownewsdetail',{noticID:noticID});
     };
 
 
@@ -20,7 +20,6 @@ app.controller('ShowNewsController', ['$scope', '$http', '$state','$stateParams'
     if( response.data.ret == '-1' ) {
         $state.go('access.z_signin');
     }else if(response.data.ret == '0'){
-
         // 判断显示那一个消息
         if($scope.typeshow == 'all'){
           $scope.isshow = true;
@@ -89,7 +88,9 @@ app.controller('ShowNewsController', ['$scope', '$http', '$state','$stateParams'
             noticID : noticID
         })
         .then(function(response) {
-      
+          if( response.data.ret == '-1' ) {
+            $state.go('access.z_signin');
+          }
         }, function(x) {
             
         });

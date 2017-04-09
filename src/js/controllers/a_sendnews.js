@@ -7,6 +7,7 @@ app.controller('SentNewsController', ['$scope', '$http', '$state','toaster', fun
         title: '',
         text: ''
     };
+    
     // 获取用户信息
     // $http.post('../api/getuserinfo.php', {})
     // .then(function(response) {
@@ -16,7 +17,7 @@ app.controller('SentNewsController', ['$scope', '$http', '$state','toaster', fun
         
     //   });
     $scope.pop = function(){
-        // console.log($scope.toaster.type);
+        $scope.content = document.getElementById('content').innerText;
         if($scope.toaster.type == '' ){
             toaster.pop('error', '请选择类型'); 
             return;
@@ -31,7 +32,8 @@ app.controller('SentNewsController', ['$scope', '$http', '$state','toaster', fun
         $http.post('../api/sendnews.php', {
             type: $scope.toaster.type,
             title: $scope.toaster.title,
-            text: $scope.toaster.text
+            text: $scope.toaster.text,
+            sketch : $scope.content.substr(28,60)
         })
         .then(function(response) {
         if( response.data.ret == '-1' ) {

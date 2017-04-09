@@ -30,7 +30,7 @@
         <ul class="list-group list-group-lg no-bg auto">
           <li ng-repeat = " task in tasks | limitTo:4" class="list-group-item clearfix">
             <span class="clear">
-              <span>{{task.NoticTitle}}</span>
+              <span><a ui-sref="app.a_shownewsdetail({noticID:'{{task.NoticID}}'})">{{task.NoticTitle}}</a></span>
               <small class="text-muted clear text-ellipsis">{{task.NoticText}}</small>
             </span>
           </li>
@@ -48,7 +48,7 @@
         <ul class="list-group list-group-lg no-bg auto">
           <li ng-repeat = " message in messages | limitTo:4" class="list-group-item clearfix">
             <span class="clear">
-              <span>{{message.NoticTitle}}</span>
+              <span><a ui-sref="app.a_shownewsdetail({noticID:'{{message.NoticID}}'})">{{message.NoticTitle}}</a></span>
               <small class="text-muted clear text-ellipsis">{{message.NoticText}}</small>
             </span>
           </li>
@@ -66,7 +66,7 @@
         <ul  class="list-group list-group-lg no-bg auto">
           <li ng-repeat = " article in articles | limitTo:4" class="list-group-item clearfix">
             <span class="clear">
-              <span>{{article.NoticTitle}}</span>
+              <span><a ui-sref="app.a_shownewsdetail({noticID:'{{article.NoticID}}'})">{{article.NoticTitle}}</a></span>
               <small class="text-muted clear text-ellipsis">{{article.NoticText}}</small>
             </span>
           </li>
@@ -88,7 +88,7 @@
               <i class="on b-white bottom"></i>
             </span>
             <span class="clear">
-              <span>{{question.NoticTitle}}</span>
+              <span><a ui-sref="app.a_shownewsdetail({noticID:'{{question.NoticID}}'})">{{question.NoticTitle}}</a></span>
               <small class="text-muted clear text-ellipsis">{{question.NoticText}}</small>
             </span>
           </li>
@@ -142,8 +142,8 @@
         </thead>
         <tbody>
           <tr ng-repeat = " onenotic in notictype">
-              <td>{{onenotic.NoticTitle}}</td>
-              <td><a href>{{onenotic.NoticText}}</a></td>
+              <td><a ui-sref="app.a_shownewsdetail({noticID:'{{onenotic.NoticID}}'})">{{onenotic.NoticTitle}}</a></td>
+              <td><a ui-sref="app.a_shownewsdetail({noticID:'{{onenotic.NoticID}}'})">{{onenotic.NoticText}}</a></td>
               <td>{{onenotic.NoticAuthor}}</td>
               <td data-value={{onenotic.NoticUUID}}>{{onenotic.SaveTime}}</td>
               <td style="margin:0px;">
@@ -153,7 +153,7 @@
                 </button> 
                 <i class="fa fa-spin fa-spinner hide" id={{onenotic.NoticID}}></i>-->
                 <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="open('sm','{{onenotic.NoticID}}')" style="margin:0px;"><i class="fa fa-trash-o"></i>删除</button>
-                <button class="btn m-b-xs btn-sm btn-info btn-addon" style="margin:0px;"><i class="fa fa-play"></i>阅读</button>
+                <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="read('{{onenotic.NoticID}}')" style="margin:0px;"><i class="fa fa-play"></i>阅读</button>
               </td>
           </tr>
         </tbody>

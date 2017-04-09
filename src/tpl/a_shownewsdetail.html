@@ -1,0 +1,24 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="ShowNewsDetailController" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+
+<div class="col-lg-12" style="margin-top: 20px;">
+    <div class="panel panel-default">
+        <div class="panel-heading blod">
+            <strong>消息</strong>
+        </div>
+        <div class="panel-body">
+            <p class="lead text-center">{{title}}</p>
+            <small class="text-muted clear text-ellipsis text-center">作者 : {{author}}  时间 : {{savetime}}</small>
+            <br><br>
+            <div id='content'></div>
+            <br>
+            <!--<p class="text-right">Right aligned text.</p>-->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+   
+</div>

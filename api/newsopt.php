@@ -13,11 +13,35 @@ error_reporting(1);
 session_start();
 $opt = $_POST['opt'];
 $noticID = $_POST['noticID'];
+// $opt = 'read';
+// $noticID = 18;
 // 选择操作
 switch($opt){
     case 'delete':
     $data['ret'] = delete_txt($mysqli,$noticID);
     echo json_encode($data);
+    break;
+
+    case 'read':
+    $select_sql = "select * from `notics` where `NoticID` = '".$noticID."'";
+    $result = $mysqli->query($select_sql);
+    $noticdescrip = $result->fetch_assoc();
+    $noticuuid = $noticdescrip['NoticUUID'];
+    $type = $noticdescrip['NoticType'];
+    $txt = '../'.$type.'/'.$noticuuid.'.txt';
+    $content = file_get_contents($txt);
+    if($result && $content){
+        $data['ret'] = 0;
+        $data['data']['noticdescrip'] = $noticdescrip;
+        $data['data']['content'] = $content;
+    }else{
+        errorreturn($txt.'文件读取失败');
+    }
+    // 斜杠不转义
+    echo json_encode($data,JSON_UNESCAPED_SLASHES);
+    break;
+
+    default:
     break;
 }
 
