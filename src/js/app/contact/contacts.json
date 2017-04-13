@@ -1,7 +1,7 @@
 {
   "items":[
     {
-      "group" : "Partner",
+      "group" : "自动化1班",
       "first": "Bertina",
       "last": "Robert",
       "company": "",
@@ -12,7 +12,7 @@
       "avatar": "img/a3.jpg"
     },
     {
-      "group" : "Coworkers",
+      "group" : "计算机2班",
       "first": "Alexandra",
       "last": "Galton",
       "company": "Google Inc.",
@@ -23,7 +23,7 @@
       "avatar": "img/a0.jpg"
     },
     {
-       "group" : "Family",
+       "group" : "自动化3班",
       "first": "Angela",
       "last": "Oscar",
       "company": "Max Inc.",
@@ -34,7 +34,7 @@
       "avatar": "img/a1.jpg"
     },
     {
-      "group" : "Friends",
+      "group" : "自动化2班",
       "first": "Annabelle",
       "last": "",
       "company": "",
@@ -45,7 +45,7 @@
       "avatar": "img/a2.jpg"
     },
     {
-      "group" : "Friends",
+      "group" : "自动化2班",
       "first": "Brenda",
       "last": "Lanny",
       "company": "",
@@ -56,7 +56,7 @@
       "avatar": "img/a4.jpg"
     },
     {
-      "group" : "Group",
+      "group" : "计算机1班",
       "first": "Britney",
       "last": "Patricia",
       "company": "",
@@ -67,7 +67,7 @@
       "avatar": "img/a5.jpg"
     },
     {
-      "group" : "Friends",
+      "group" : "自动化2班",
       "first": "Blanche",
       "last": "Julian",
       "company": "",
@@ -78,7 +78,7 @@
       "avatar": "img/a6.jpg"
     },
     {
-      "group" : "Group",
+      "group" : "计算机1班",
       "first": "Deborah",
       "last": "Darryl",
       "company": "",
@@ -89,7 +89,7 @@
       "avatar": "img/a7.jpg"
     },
     {
-      "group" : "Group",
+      "group" : "计算机1班",
       "first": "Elizabeth",
       "last": "",
       "company": "",
@@ -100,7 +100,7 @@
       "avatar": "img/a8.jpg"
     },
     {
-      "group" : "Partners",
+      "group" : "自动化1班",
       "first": "Emily",
       "last": "Jolyon",
       "company": "",
@@ -111,7 +111,7 @@
       "avatar": "img/a9.jpg"
     },
     {
-      "group" : "Partners",
+      "group" : "自动化1班",
       "first": "Gertrude",
       "last": "",
       "company": "",
@@ -122,7 +122,7 @@
       "avatar": "img/a8.jpg"
     },
     {
-      "group" : "Family",
+      "group" : "自动化3班",
       "first": "Gwynne",
       "last": "Rufus",
       "company": "",
@@ -133,7 +133,7 @@
       "avatar": "img/a8.jpg"
     },
     {
-      "group" : "Coworkers",
+      "group" : "计算机2班",
       "first": "Octavia",
       "last": "Swaine",
       "company": "",

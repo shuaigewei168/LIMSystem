@@ -65,10 +65,23 @@ angular.module('app')
                       }]
                   }
               })
-            //   .state('app.a_sendnews', {
-            //       url: '/a_sendnews',
-            //       templateUrl: 'tpl/a_sendnews.html'
-            //   })
+
+              //成员列表
+              .state('contact', {
+                  abstract: true,
+                  url: '/contact',
+                  templateUrl: 'tpl/b_layout.html'
+              })
+              .state('contact.b_memberlist', {
+                  url: '/b_memberlist',
+                  templateUrl: 'tpl/b_memberlist.html',
+                  resolve: {
+                      deps: ['uiLoad',
+                        function( uiLoad ){
+                          return uiLoad.load( ['js/controllers/b_memberlist.js'] );
+                      }]
+                  }
+              })
 
 
                //登录,注册等访问
