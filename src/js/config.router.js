@@ -83,6 +83,23 @@ angular.module('app')
                   }
               })
 
+              //资源管理
+              .state('source', {
+                  abstract: true,
+                  url: '/source',
+                  templateUrl: 'tpl/c_layout.html'
+              })
+              .state('source.c_sourcelist', {
+                  url: '/c_sourcelist',
+                  templateUrl: 'tpl/c_sourcelist.html',
+                  resolve: {
+                      deps: ['uiLoad',
+                        function( uiLoad ){
+                          return uiLoad.load( ['js/controllers/c_sourcelist.js'] );
+                      }]
+                  }
+              })
+
 
                //登录,注册等访问
               .state('access', {
