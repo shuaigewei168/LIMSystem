@@ -143,10 +143,10 @@
         <tbody>
           <tr ng-repeat = " onenotic in notictype">
               <td><a ui-sref="app.a_shownewsdetail({noticID:'{{onenotic.NoticID}}'})">{{onenotic.NoticTitle}}</a></td>
-              <td><a ui-sref="app.a_shownewsdetail({noticID:'{{onenotic.NoticID}}'})">{{onenotic.NoticText}}</a></td>
-              <td>{{onenotic.NoticAuthor}}</td>
-              <td data-value={{onenotic.NoticUUID}}>{{onenotic.SaveTime}}</td>
-              <td style="margin:0px;">
+              <td data-hide="phone"><a ui-sref="app.a_shownewsdetail({noticID:'{{onenotic.NoticID}}'})">{{onenotic.NoticText}}</a></td>
+              <td data-hide="phone">{{onenotic.NoticAuthor}}</td>
+              <td data-hide="phone" data-value={{onenotic.NoticUUID}}>{{onenotic.SaveTime}}</td>
+              <td data-hide="phone" style="margin:0px;">
                 <!--<button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="open('sm')" style="margin:0px;" ui-toggle-class="show inline" target='#{{onenotic.NoticID}}'>
                   <span class="text"><i class="fa fa-trash-o"></i>删除</span>
                   <span class="text-active"><i class="fa fa-trash-o"></i>删除中</span>
