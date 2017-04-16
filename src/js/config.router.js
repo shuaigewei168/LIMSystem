@@ -99,6 +99,20 @@ angular.module('app')
                       }]
                   }
               })
+              .state('source.c_addsource', {
+                  url: '/c_addsource',
+                  templateUrl: 'tpl/c_addsource.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('ngImgCrop').then(
+                              function(){
+                                 return $ocLazyLoad.load('js/controllers/c_addsource.js');
+                              }
+                          );
+                      }]
+                  }
+              })
 
 
                //登录,注册等访问

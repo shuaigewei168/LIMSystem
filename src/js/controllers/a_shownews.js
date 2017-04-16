@@ -75,7 +75,7 @@ app.controller('ShowNewsController', ['$scope', '$http', '$state','$stateParams'
         size: size,
         resolve: {
           items: function () {
-            return $scope.items;
+            return $scope.items;  
           }
         }
       });
