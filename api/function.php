@@ -125,4 +125,22 @@ function email1($to,$title,$body){
 	}
 }
 
+/*****************************
+函数：PostParamCheck
+输入参数：无
+输出：无
+
+功能：检查Post是否满足传参要求
+******************************/
+function PostParamCheck(){
+  if(is_null($_POST['sourcename']) || !isset($_POST['sourcename']) || $_POST['sourcename']==''){
+      errorreturn('参数sourcename有误', print_r($_POST,true));
+      exit;
+  }
+  if(is_null($_POST['sourcecount']) || !isset($_POST['sourcecount']) || $_POST['sourcecount']==''){
+      errorreturn('参数sourcecount有误', print_r($_POST,true));
+      exit;
+  }
+}
+
 ?>
