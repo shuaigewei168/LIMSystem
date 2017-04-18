@@ -12,13 +12,15 @@ define("LOCALHOST", "bdm273834305.my3w.com");
 define("USERNAME", "bdm273834305");
 define("PASSWORD", "linjiawei");
 define("DATABASE", "bdm273834305_db"); 
-define('DomainName','http://bxu2442270530.my3w.com/LIMSystem/images/');   
+define('DomainName','http://bxu2442270530.my3w.com/LIMSystem/images/');
+define('DomainNameRoot','http://bxu2442270530.my3w.com/LIMSystem/src'); 
 }else{
 define("LOCALHOST", "localhost");
 define("USERNAME", "root");
 define("PASSWORD", "linjiawei");
 define("DATABASE", "limsystem");
 define('DomainName','http://127.0.0.1/LIMSystem/images/');
+define('DomainNameRoot','http://127.0.0.1/LIMSystem/src');
 }
 
 //转换前端的json

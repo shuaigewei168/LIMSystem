@@ -21,6 +21,7 @@ include_once('Mysql.php');
 include_once('function.php');
 $sourcename = $_POST['sourcename'];
 $sourcecount = $_POST['sourcecount'];
+// $_FILES["uploadimage"] = $_POST['uploadimage'];
 PostParamCheck(); //检查post的参数
 $UpTypes=array('jpg', 'jpeg','png','pjpeg','gif','bmp','x-png'); //允许的图片类型    
 $MAX_IMAGE_SIZE=2000000;     //上传文件大小限制, 单位BYTE 
@@ -101,9 +102,9 @@ $stmt = $mysqli->prepare($imageupload_ImageInsert);
 $stmt->bind_param("sissss",$sourcename,$sourcecount,$size,$url,$destination,$date);
 $stmt->execute();
 $stmt->close();
-
-echo json_encode(array('ret'=>0,'data'=> array('imageurl' => $url ,'destination'=>$destination, 'imagename'=>$ImageName , 'imagesize'=>$noFarmatSize ,
-'sourcename'=>$_POST['sourcename'] , 'sourcecount'=>$_POST['sourcecount'])),JSON_UNESCAPED_SLASHES);
+header('Location: '.DomainNameRoot.'/#/source/c_sourcelist');
+// echo json_encode(array('ret'=>0,'data'=> array('imageurl' => $url ,'destination'=>$destination, 'imagename'=>$ImageName , 'imagesize'=>$noFarmatSize ,
+// 'sourcename'=>$_POST['sourcename'] , 'sourcecount'=>$_POST['sourcecount'])),JSON_UNESCAPED_SLASHES);
 
 
 /*****************************

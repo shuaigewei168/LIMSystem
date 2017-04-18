@@ -5,6 +5,7 @@
   "> 
 <div class="wrapper-md">
   <div class="panel panel-default">
+   <form enctype="multipart/form-data" action='../api/addsource.php' method="post" class="form-horizontal ng-pristine ng-valid ng-valid-date ng-valid-required ng-valid-parse ng-valid-date-disabled" >    
     <div class="panel-heading">
       添加资源
            <i class="icon-action-undo" style='float: right'><a ui-sref="source.c_sourcelist">返回</a></i>
@@ -12,7 +13,7 @@
     
     <div class="wrapper-md">
     <div class="m-b">
-        <input type="file" id="fileInput" />
+        <input type="file" id="fileInput" name="uploadimage" ng-model='uploadimage'/>
     </div>
     <div class="hbox hbox-auto-xs">
         <div class="col">
@@ -38,20 +39,19 @@
     </div>
 
     <div class="panel-body">
-      <form class="form-horizontal ng-pristine ng-valid ng-valid-date ng-valid-required ng-valid-parse ng-valid-date-disabled" >
         <div class="form-group">
           <label class="col-sm-2 col-md-1 control-label">名称</label>
           <div class="col-sm-10 col-md-11">
-            <input type="text" class="form-control" placeholder="请输入资源名称" ng-model="sourcename" required>
+            <input type="text" class="form-control" placeholder="请输入资源名称" ng-model="sourcename" name="sourcename" required>
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-2 col-md-1 control-label">数量</label>
           <div class="col-sm-10 col-md-11">
-            <input type="number" class="form-control" placeholder="请输入数量" ng-model="count" required>
+            <input type="number" class="form-control" placeholder="请输入数量" ng-model="sourcecount" name="sourcecount" required>
           </div>
         </div>
-        <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="" style="vertical-align:middle;"><i class="fa fa-plus"></i>添加</button>   
+        <button class="btn m-b-xs btn-sm btn-success btn-addon" type="submit" name="submit" style="vertical-align:middle;"><i class="fa fa-plus"></i>添加</button>   
       </form>
     </div>
 
