@@ -3,7 +3,7 @@
     app.settings.asideDock = false;
   ">
 <div class="wrapper-md" ng-controller="SourceListController">
- <div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="SourceListController" ng-init="
+ <div class="hbox hbox-auto-xs hbox-auto-sm"  ng-init="
     app.settings.asideFolded = false; 
     app.settings.asideDock = false;
   "> 
@@ -51,17 +51,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr >
-              <td><span class="pull-left thumb-md  m-r"><img src="img/a4.jpg" alt="..."></span></td>
-              <td data-hide="phone"  style="vertical-align:middle;">电阻</td>
-              <td data-hide="phone"  style="vertical-align:middle;">1</td>
+          <tr ng-repeat = " onesource in sources">
+              <td><span class="pull-left thumb-md  m-r"><img src={{onesource.SourcePath}} alt="..."></span></td>
+              <td data-hide="phone"  style="vertical-align:middle;">{{onesource.SourceName}}</td>
+              <td data-hide="phone"  style="vertical-align:middle;">{{onesource.SourceCount}}</td>
               <td data-hide="phone" style="margin:0px;vertical-align:middle;">
                 <!--<button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="open('sm')" style="margin:0px;" ui-toggle-class="show inline" target='#{{onenotic.NoticID}}'>
                   <span class="text"><i class="fa fa-trash-o"></i>删除</span>
                   <span class="text-active"><i class="fa fa-trash-o"></i>删除中</span>
                 </button> 
                 <i class="fa fa-spin fa-spinner hide" id={{onenotic.NoticID}}></i>-->
-                <button class="btn m-b-xs btn-sm btn-warning btn-addon" ng-click="open('sm','{{onenotic.NoticID}}')" style="margin:0px;"><i class="fa fa-circle"></i>申请</button>                
+                <button class="btn m-b-xs btn-sm btn-info btn-addon" ui-sref="source.c_applysource({SourceID:'{{onesource.SourceID}}'})"  style="margin:0px;"><i class="fa fa-circle"></i>申请</button>                
                 <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="open('sm','{{onenotic.NoticID}}')" style="margin:0px;"><i class="fa fa-terminal"></i>修改</button>
                 <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="open('sm','{{onenotic.NoticID}}')" style="margin:0px;"><i class="fa fa-trash-o"></i>删除</button>
               </td>

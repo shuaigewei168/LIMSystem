@@ -13,6 +13,20 @@ app.controller('SourceListController', ['$scope', '$http', '$state', function($s
     $scope.savesource = function(){
       $scope.ischange = false;
     };
+
+    $http.post('../api/getsource.php', {
+
+    })
+    .then(function(response) {
+    if( response.data.ret == '-1' ) {
+        $state.go('access.z_signin');
+    }else if(response.data.ret == '0'){
+        // console.log(response.data.data);
+        $scope.sources = response.data.data;   
+    }
+    }, function(x) {
+        
+    });
   
 
   }]);

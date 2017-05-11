@@ -113,6 +113,24 @@ angular.module('app')
                       }]
                   }
               })
+              .state('app.c_applysource', {
+                  url: '/c_applysource/{SourceID}',
+                  templateUrl: 'tpl/c_applysource.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('toaster').then(
+                              function(){
+                                 return $ocLazyLoad.load('textAngular').then(
+                                    function(){
+                                        return $ocLazyLoad.load('js/controllers/c_applysource.js');
+                                    }
+                                 );
+                              }
+                          );
+                      }]
+                  }
+              })
 
 
                //登录,注册等访问

@@ -19,8 +19,12 @@
 ********************************/
 include_once('Mysql.php');
 include_once('function.php');
+include_once('PreLogic.php');
+session_start();
 $sourcename = $_POST['sourcename'];
 $sourcecount = $_POST['sourcecount'];
+$loginid = $_SESSION['Login']['loginID'];
+session_write_close();
 // $_FILES["uploadimage"] = $_POST['uploadimage'];
 PostParamCheck(); //检查post的参数
 $UpTypes=array('jpg', 'jpeg','png','pjpeg','gif','bmp','x-png'); //允许的图片类型    
@@ -30,13 +34,18 @@ $NewDir = str_replace('api','images',__DIR__);
 
 //判断能够获取图片size，如果不能获取,则证明不是图片
 if(!getimagesize($_FILES["uploadimage"]['tmp_name'])){
-    errorreturn('上传的文件不是图片', print_r($_FILES,true)); 
+    logresult('上传的文件不是图片');
+    echo '上传的文件不是图片';
+    echo "</br></br><button ><a href='".DomainNameRoot."/#/source/c_addsource'>重新上传</a></button>";
     exit;
 }
 
 //是否添加了文件
 if (!is_uploaded_file($_FILES["uploadimage"]['tmp_name'])){  
-    errorreturn('图片不存在', print_r($_FILES,true));   
+    logresult('图片不存在');
+    echo '图片不存在';
+    echo "</br></br><button ><a href='".DomainNameRoot."/#/source/c_addsource'>重新上传</a></button>";
+    exit;  
     exit;  
 }
 
@@ -48,7 +57,9 @@ $strDomainName = DomainName;
 if(!file_exists($NewDir)){ 
     $NewNewDir=iconv("UTF-8","gbk",$NewDir); 
     if(!mkdir($NewNewDir,0777,true)){
-        errorreturn('创建文件夹失败', print_r($NewDir,true));
+        logresult('创建文件夹失败');
+        echo '创建文件夹失败';
+        echo "</br></br><button ><a href='".DomainNameRoot."/#/source/c_addsource'>重新上传</a></button>";      
     }
     // $directorydata_Insert = "INSERT INTO `directorydata`(`DomainName`,`Source`,`UserName`,`DirName`) values(?,?,?,?)";
 	// $stmt = $mysqli->prepare($directorydata_Insert);
@@ -72,13 +83,17 @@ $PathInfo=pathinfo($file["name"]);
 $FileType=$PathInfo['extension'];   
 $destination = $NewDir.'/'.time().rand(0,9999).".".$FileType;  
 if (file_exists($destination)){  
-    errorreturn('同名文件已经存在了', print_r($destination,true)); 
+     logresult('同名文件已经存在了');
+     echo '同名文件已经存在了';
+     echo "</br></br><button ><a href='".DomainNameRoot."/#/source/c_addsource'>重新上传</a></button>";
     exit;  
 }  
 
 //保存文件
 if(!move_uploaded_file ($FileName, iconv("UTF-8","gbk",$destination))){  
-    errorreturn('移动文件出错', print_r($FileName,true)); 
+    logresult('移动文件出错');
+    echo '移动文件出错';
+    echo "</br></br><button ><a href='".DomainNameRoot."/#/source/c_addsource'>重新上传</a></button>";
     exit;  
 } 
 $PathInfo=pathinfo($destination);
@@ -94,12 +109,12 @@ $size = formatBytes($file['size']);
 // if ($mysqli->affected_rows == 0) {
 //     errorreturn('数据库异常！', print_r($_POST,true));
 // }
-$imageupload_ImageInsert="insert into sourcelist(SourceName,SourceCount,SourceSize,SourcePath,SourceDestination,UploadTime) values(?,?,?,?,?,?)";
+$imageupload_ImageInsert="insert into sourcelist(SourceName,SourceCount,SourceSize,SourcePath,SourceDestination,UploadTime,LoginID) values(?,?,?,?,?,?,?)";
 // if(!$stmt=$mysqli->prepare($simageupload_ImageInsertql)){
 //     errorreturn('添加图片数据失败');
 // }
 $stmt = $mysqli->prepare($imageupload_ImageInsert);
-$stmt->bind_param("sissss",$sourcename,$sourcecount,$size,$url,$destination,$date);
+$stmt->bind_param("sissssi",$sourcename,$sourcecount,$size,$url,$destination,$date,$loginid);
 $stmt->execute();
 $stmt->close();
 header('Location: '.DomainNameRoot.'/#/source/c_sourcelist');
@@ -117,7 +132,9 @@ header('Location: '.DomainNameRoot.'/#/source/c_sourcelist');
 function ImageFormatCheck($UpTypes,$MAX_IMAGE_SIZE,$file){
     //检查文件大小   
     if($MAX_IMAGE_SIZE < $file["size"]){  
-        errorreturn('文件太大', print_r($file["size"],true));  
+        logresult('文件太大');
+        echo '文件太大';
+        echo "</br></br><button ><a href='".DomainNameRoot."/#/source/c_addsource'>重新上传</a></button>"; 
         exit;  
     }  
 
@@ -125,7 +142,9 @@ function ImageFormatCheck($UpTypes,$MAX_IMAGE_SIZE,$file){
     $PathInfo=pathinfo($file["name"]);  
     $FileType=$PathInfo['extension'];
     if(!in_array($FileType, $UpTypes)){  
-        errorreturn('文件类型不符', print_r($FileType,true));  
+        logresult('文件类型不符');
+        echo '文件类型不符';
+        echo "</br></br><button ><a href='".DomainNameRoot."/#/source/c_addsource'>重新上传</a></button>"; 
         exit;  
     }
 }
