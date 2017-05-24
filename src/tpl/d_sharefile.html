@@ -2,7 +2,7 @@
     app.settings.asideFolded = false; 
     app.settings.asideDock = false;
   ">
-<div class="wrapper-md" ng-controller="SourceListController">
+<div class="wrapper-md" ng-controller="FileListController">
  <div class="hbox hbox-auto-xs hbox-auto-sm"  ng-init="
     app.settings.asideFolded = false; 
     app.settings.asideDock = false;
@@ -25,25 +25,27 @@
 <div class="wrapper-md"  ng-controller="ShowModalControler">
   <div class="panel panel-default">
     <div class="panel-heading">
-      资源列表
+      文件共享列表
      <!--<i class="icon-action-undo" style='float: right'><a ui-sref="app.a_shownews({type:'all'})">返回</a></i>-->
     </div>
     <div class="panel-body b-b b-light">
             关键字搜索: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
-      <button style='vertical-align:middle;margin-top:3px' class="btn m-b-xs btn-sm btn-primary btn-addon" ui-sref="source.c_addsource"><i class="fa fa-plus"></i>添加资源</button>      
     </div>
     <div>
       <table class="table m-b-none" ui-jq="footable" data-filter="#filter" data-page-size="8">
         <thead>
           <tr>
               <th data-toggle="true" >
-                  图片
-              </th>
-              <th data-hide="phone" >
                   名称
               </th>
               <th data-hide="phone" >
-                  剩余
+                  文件大小
+              </th>
+              <th data-hide="phone" >
+                  上传者ID
+              </th>
+              <th data-hide="phone" >
+                  上传时间
               </th>
               <th data-hide="" >
                   操作
@@ -51,19 +53,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat = " onesource in sources">
-              <td><span class="pull-left thumb-md  m-r"><img src={{onesource.SourcePath}} alt="..."></span></td>
-              <td data-hide="phone"  style="vertical-align:middle;">{{onesource.SourceName}}</td>
-              <td data-hide="phone"  style="vertical-align:middle;">{{onesource.SourceCount}}</td>
+          <tr ng-repeat = " oneFile in Files">
+              <td data-hide="phone"  style="vertical-align:middle;">{{oneFile.FileName}}</td>
+              <td data-hide="phone"  style="vertical-align:middle;">{{oneFile.FileSize}}</td>
+              <td data-hide="phone"  style="vertical-align:middle;">{{oneFile.UploadLoginID}}</td>
+              <td data-hide="phone"  style="vertical-align:middle;">{{oneFile.FileUploadTime}}</td>
               <td data-hide="phone" style="margin:0px;vertical-align:middle;">
-                <!--<button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="open('sm')" style="margin:0px;" ui-toggle-class="show inline" target='#{{onenotic.NoticID}}'>
-                  <span class="text"><i class="fa fa-trash-o"></i>删除</span>
-                  <span class="text-active"><i class="fa fa-trash-o"></i>删除中</span>
-                </button> 
-                <i class="fa fa-spin fa-spinner hide" id={{onenotic.NoticID}}></i>-->
-                <button class="btn m-b-xs btn-sm btn-info btn-addon" ui-sref="source.c_applysource({SourceID:'{{onesource.SourceID}}'})"  style="margin:0px;" ng-disabled="{{onesource.SourceCount}}==0"><i class="fa fa-circle"></i>申请</button>                
-                <button class="btn m-b-xs btn-sm btn-success btn-addon" ui-sref="source.c_modifysource({SourceID:'{{onesource.SourceID}}'})" style="margin:0px;"><i class="fa fa-terminal"></i>修改</button>
-                <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="open('sm','{{onesource.SourceID}}')" style="margin:0px;"><i class="fa fa-trash-o"></i>删除</button>
+                <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="download({{oneFile.FileID}})"  style="margin:0px;"><i class="fa fa-circle"></i>下载</button>                
+                <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="open('sm','{{oneFile.FileID}}')" style="margin:0px;"><i class="fa fa-trash-o"></i>删除</button>
               </td>
           </tr>
         </tbody>

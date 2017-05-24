@@ -1,0 +1,31 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+<div class="wrapper-md" ng-controller="SentEmailController">
+  <toaster-container toaster-options="{'position-class': 'toast-top-full-width', 'close-button':false}"></toaster-container>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>标题</label>
+        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入标题......" ng-model="toaster.title">
+      </div>
+      <div class="form-group">
+        <label>收件人(用户名)：</label>
+        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入收件人......" ng-model="toaster.reciver">
+      </div>
+    </div>
+
+    <!--内容-->
+    <div class="form-group col-sm-12">
+      <label>内容</label>
+      <div class="wrapper-md">
+        <div text-angular ng-model="toaster.text" class="btn-groups" id='content'></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-info" ng-click="pop()">发  表</button>
+
+</div> 
+</div>

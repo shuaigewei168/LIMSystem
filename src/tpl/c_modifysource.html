@@ -2,15 +2,15 @@
     app.settings.asideFolded = false; 
     app.settings.asideDock = false;
   ">
-<div class="wrapper-md"  ng-controller="ApplySourceController">
+<div class="wrapper-md"  ng-controller="ModifySourceController">
   <toaster-container toaster-options="{'position-class': 'toast-top-full-width', 'close-button':false}"></toaster-container>
   <div class="panel panel-default">
     <div class="panel-heading">
-      资源申请表填写
+      修改资源
      <i class="icon-action-undo" style='float: right'><a ui-sref="source.c_sourcelist">返回</a></i>
     </div>
     <div>
-      <table class="table m-b-none"  data-filter="#filter" data-page-size="8">
+      <table class="table m-b-none" ui-jq="footable" data-filter="#filter" data-page-size="8">
         <thead>
           <tr>
               <th>
@@ -18,6 +18,12 @@
               </th>
               <th>
                   名称
+              </th>
+              <th data-hide="phone">
+                  总数
+              </th>
+              <th data-hide="phone">
+                  借出
               </th>
               <th>
                   剩余
@@ -28,6 +34,8 @@
           <tr>
               <td><span class="pull-left thumb-md  m-r"><img src={{SourcePath}}></span></td>
               <td style="vertical-align:middle;">{{SourceName}}</td>
+              <td data-hide="phone" style="vertical-align:middle;">{{TotalCount}}</td>
+              <td data-hide="phone" style="vertical-align:middle;">{{ApplyTotalCount}}</td>
               <td style="vertical-align:middle;" ng-model="SourceCount">{{SourceCount}}</td>
           </tr>
         </tbody>
@@ -37,26 +45,19 @@
    <form class="form-horizontal ng-pristine ng-valid ng-valid-date ng-valid-required ng-valid-parse ng-valid-date-disabled">    
     <div class="panel-body">
         <div class="form-group">
-          <label class="col-sm-2 col-md-1 control-label">数量</label>
-          <div class="col-sm-10 col-md-11">
-            <input min="1" max="{{SourceCount}}" type="number" class="form-control" placeholder="请输入数量" ng-model="toaster.applycount"  required>
+          <label class="col-sm-2 col-md-2 control-label">名称为</label>
+          <div class="col-sm-10 col-md-10">
+            <input maxlength="20" max="{{SourceName}}" type="text" class="form-control" placeholder="请输入要更改的名称" ng-model="toaster.modifyname">
           </div>
-        </div>
+        </div> 
         <div class="form-group">
-          <label class="col-sm-2 col-md-1 control-label">归还时间</label>
-          <div class="col-sm-10 col-md-11">
-            <input type="date" id='expecttime' class="form-control" placeholder="请输入到期时间" ng-model="toaster.expecttime"  required>
+          <label class="col-sm-2 col-md-2 control-label">剩余数量为</label>
+          <div class="col-sm-10 col-md-10">
+            <input min="0" max="{{SourceCount}}" type="number" class="form-control" placeholder="请输入要更改的剩余数量" ng-model="toaster.modifycount">
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-2 col-md-1 control-label">说明</label>
-          <div class="col-sm-10 col-md-11">
-            <textarea rows='5' maxlength="100" class="form-control" placeholder="请说明理由(100字内)" ng-model="toaster.appylyreason"  required></textarea>
-          </div>
-        </div>
-          
+        </div>       
    </form>
-   <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="pop()" style="vertical-align:middle;"><i class="fa fa-plus"></i>申请</button> 
+   <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="pop()" style="vertical-align:middle;"><i class="fa fa-plus"></i>修改</button> 
 
 
 

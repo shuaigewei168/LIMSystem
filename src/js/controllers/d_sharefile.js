@@ -1,28 +1,28 @@
 'use strict';
-app.controller('SourceListController', ['$scope', '$http', '$state', function($scope, $http,$state) {
+app.controller('FileListController', ['$scope', '$http', '$state','$window', function($scope, $http,$state,$window) {
     $scope.user = {};
     $scope.authError = null;
     $scope.ischange = false;
 
     // 修改资源
-    $scope.changesource = function(){
-      $scope.ischange = true;
+    $scope.download = function(FileID){
+        window.location.href="../api/d_sharefile.php?opt=download&FileID="+FileID;
     };
 
     // 保存资源
-    $scope.savesource = function(){
+    $scope.saveFile = function(){
       $scope.ischange = false;
     };
 
-    $http.post('../api/getsource.php', {
-      opt: 'getsource'
+    $http.post('../api/d_sharefile.php', {
+      opt: 'getfile'
     })
     .then(function(response) {
     if( response.data.ret == '-1' ) {
         $state.go('access.z_signin');
     }else if(response.data.ret == '0'){
         // console.log(response.data.data);
-        $scope.sources = response.data.data;  
+        $scope.Files = response.data.data;  
     }
     }, function(x) {
         
@@ -34,13 +34,13 @@ app.controller('SourceListController', ['$scope', '$http', '$state', function($s
 // 弹框
  app.controller('ShowModalInstanceCtrl', ['$scope', '$modalInstance', 'items','$state','$stateParams','$window', '$http', function($scope, $modalInstance, items, $state,$stateParams,$window,$http) {
     // 点击确认删除
-    $scope.ok = function (SourceID) {
+    $scope.ok = function (FileID) {
       $modalInstance.close('ok');
       // $window.location.reload();
     };
     //点击取消删除
     $scope.cancel = function () {
-      $state.go('source.c_sourcelist');
+      $state.go('File.c_Filelist');
       // $window.location.reload();
       $modalInstance.dismiss('cancel');
     };
@@ -48,7 +48,7 @@ app.controller('SourceListController', ['$scope', '$http', '$state', function($s
 
 
   app.controller('ShowModalControler', ['$scope', '$modal', '$log','$state','$http','$window', function($scope, $modal, $log, $state,$http,$window) {
-    $scope.open = function (size,SourceID) {
+    $scope.open = function (size,FileID) {
       var modalInstance = $modal.open({
         templateUrl: 'myModalContent.html',
         controller: 'ShowModalInstanceCtrl',
@@ -63,9 +63,9 @@ app.controller('SourceListController', ['$scope', '$http', '$state', function($s
       modalInstance.result.then(function (selectedItem) {
         // 确认删除
         $scope.selected = selectedItem;
-        $http.post('../api/getsource.php', {
-            opt : 'deletesource',
-            SourceID : SourceID
+        $http.post('../api/getFile.php', {
+            opt : 'deleteFile',
+            FileID : FileID
         })
         .then(function(response) {
           if( response.data.ret == '-1' ) {

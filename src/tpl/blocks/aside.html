@@ -25,15 +25,15 @@
           <li class="wrapper b-b m-b-sm bg-info m-t-n-xs">
             <span class="arrow top hidden-folded arrow-info"></span>
             <div class="text-center-folded">
-              <span class="pull-right pull-none-folded">60%</span>
-              <span class="hidden-folded">经验条</span>
+              <!--<span class="pull-right pull-none-folded">60%</span>
+              <span class="hidden-folded">经验条</span>-->
             </div>
       <!--<progressbar value="60" class="progress-xxs m-t-sm dk" type="info"></progressbar>-->
-            <progressbar value="80" type="white" class="progress-xs m-b-none dker"></progressbar>
+            <!--<progressbar value="80" type="white" class="progress-xs m-b-none dker"></progressbar>-->
           </li>
           <li>
             <a href>
-              <span>等级：</span>
+              <span>权限等级：</span>
               <span class="hidden-folded">{{level}}</span>
             </a>
           </li>
@@ -41,9 +41,9 @@
             <a ui-sref="app.page.profile">Profile</a>
           </li>-->
           <li>
-            <a href>
-              <span class="badge bg-danger pull-right">3</span>
-              通知
+            <a ui-sref="app.e_emaillist">
+              <span class="badge bg-danger pull-right">{{count}}</span>
+              收件箱
             </a>
           </li>
           <li class="divider"></li>
@@ -62,7 +62,7 @@
     <!-- nav -->
 
     <!-- aside footer -->
-    <div class="wrapper m-t">
+    <!--<div class="wrapper m-t">
       <div class="text-center-folded">
         <span class="pull-right pull-none-folded">60%</span>
         <span class="hidden-folded" translate="aside.MILESTONE">Milestone</span>
@@ -73,7 +73,7 @@
         <span class="hidden-folded" translate="aside.RELEASE">Release</span>
       </div>
       <progressbar value="35" class="progress-xxs m-t-sm dk" type="primary"></progressbar>
-    </div>
+    </div>-->
     <!-- / aside footer -->
   </div>
 </div>

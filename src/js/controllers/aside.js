@@ -10,6 +10,7 @@ app.controller('AsideController', ['$scope', '$http', '$state', function($scope,
         $scope.realname = response.data.data['RealName'];
         $scope.username = response.data.data['UserName'];
         $scope.level = response.data.data['Level'];
+        $scope.count = response.data.data['count'];
       }
       }, function(x) {
         

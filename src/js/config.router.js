@@ -113,7 +113,7 @@ angular.module('app')
                       }]
                   }
               })
-              .state('app.c_applysource', {
+              .state('source.c_applysource', {
                   url: '/c_applysource/{SourceID}',
                   templateUrl: 'tpl/c_applysource.html',
                   resolve: {
@@ -131,7 +131,151 @@ angular.module('app')
                       }]
                   }
               })
+                //我的资源详情
+              .state('source.c_myapplysourcedetail', {
+                  url: '/c_myapplysourcedetail/{ApplyID}',
+                  templateUrl: 'tpl/c_myapplysourcedetail.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('toaster').then(
+                              function(){
+                                 return $ocLazyLoad.load('textAngular').then(
+                                    function(){
+                                        return $ocLazyLoad.load('js/controllers/c_myapplysourcedetail.js');
+                                    }
+                                 );
+                              }
+                          );
+                      }]
+                  }
+              })
+              //成员申请
+              .state('source.c_memberapply', {
+                  url: '/c_memberapply',
+                  templateUrl: 'tpl/c_memberapply.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('toaster').then(
+                              function(){
+                                 return $ocLazyLoad.load('textAngular').then(
+                                    function(){
+                                        return $ocLazyLoad.load('js/controllers/c_memberapply.js');
+                                    }
+                                 );
+                              }
+                          );
+                      }]
+                  }
+              })
+              .state('source.c_modifysource', {
+                  url: '/c_modifysource/{SourceID}',
+                  templateUrl: 'tpl/c_modifysource.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('toaster').then(
+                              function(){
+                                 return $ocLazyLoad.load('textAngular').then(
+                                    function(){
+                                        return $ocLazyLoad.load('js/controllers/c_modifysource.js');
+                                    }
+                                 );
+                              }
+                          );
+                      }]
+                  }
+              })
+              .state('source.c_myapplysource', {
+                  url: '/c_myapplysource',
+                  templateUrl: 'tpl/c_myapplysource.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('toaster').then(
+                              function(){
+                                 return $ocLazyLoad.load('textAngular').then(
+                                    function(){
+                                        return $ocLazyLoad.load('js/controllers/c_myapplysource.js');
+                                    }
+                                 );
+                              }
+                          );
+                      }]
+                  }
+              })
 
+            //   共享中心
+             .state('app.d_fileupload', {
+                  url: '/d_fileupload',
+                  templateUrl: 'tpl/d_fileupload.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('angularFileUpload').then(
+                              function(){
+                                 return $ocLazyLoad.load('js/controllers/d_fileupload.js');
+                              }
+                          );
+                      }]
+                  }
+              })
+              .state('app.d_sharefile', {
+                  url: '/d_sharefile',
+                  templateUrl: 'tpl/d_sharefile.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('angularFileUpload').then(
+                              function(){
+                                 return $ocLazyLoad.load('js/controllers/d_sharefile.js');
+                              }
+                          );
+                      }]
+                  }
+              })
+
+
+                //消息中心
+               .state('app.e_sendemail', {
+                  url: '/e_sendemail',
+                  templateUrl: 'tpl/e_sendemail.html',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('toaster').then(
+                              function(){
+                                 return $ocLazyLoad.load('textAngular').then(
+                                    function(){
+                                        return $ocLazyLoad.load('js/controllers/e_sendemail.js');
+                                    }
+                                 );
+                              }
+                          );
+                      }]
+                  }
+              })
+              .state('app.e_emaillist', {
+                  url: '/e_emaillist',
+                  templateUrl: 'tpl/e_emaillist.html',
+                  resolve: {
+                    deps: ['$ocLazyLoad',
+                      function( $ocLazyLoad ){
+                        return $ocLazyLoad.load(['js/controllers/e_emaillist.js']);
+                    }]
+                  }
+              })
+              .state('app.e_emailsdetail', {
+                  url: '/e_emailsdetail/{EmailID}',
+                  templateUrl: 'tpl/e_emailsdetail.html',
+                  resolve: {
+                    deps: ['$ocLazyLoad',
+                      function( $ocLazyLoad ){
+                        return $ocLazyLoad.load(['js/controllers/e_emailsdetail.js']);
+                    }]
+                  }
+              })
 
                //登录,注册等访问
               .state('access', {

@@ -1,0 +1,91 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+<div class="wrapper-md" ng-controller="DetailSourceController">
+ <div class="hbox hbox-auto-xs hbox-auto-sm"  ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  "> 
+
+<div ng-controller="ShowModalControler" class="panel b-a">
+    <script type="text/ng-template" id="myModalContent.html">
+      <div class="modal-header">
+          <h3 class="modal-title">确认归还?</h3>
+      </div>
+      <div class="modal-footer">                  
+          <button class="btn btn-default" ng-click="cancel()">取消归还</button>
+          <button class="btn btn-primary" ng-click="ok()">确认归还</button>
+      </div>
+    </script>
+</div>
+<div class="wrapper-md"  ng-controller="ShowModalControler">
+  <toaster-container toaster-options="{'position-class': 'toast-top-full-width', 'close-button':false}"></toaster-container>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      资源申请详情
+     <i class="icon-action-undo" style='float: right'><a ui-sref="source.c_myapplysource">返回</a></i>
+    </div>
+        <div>
+        <table class="table m-b-none" ui-jq="footable" data-filter="#filter" data-page-size="8">
+        <thead>
+            <tr>
+                <th data-hide="phone" >
+                    图片
+                </th>
+                <th >
+                    名称
+                </th>
+                <th >
+                    数量
+                </th>
+                <th data-hide="phone" >
+                    申请时间
+                </th>
+                <th>
+                    归还时间
+                </th>
+                <th data-hide="phone" >
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat = " onesource1 in sources1">
+                <td data-hide="phone"><span class="pull-left thumb-md  m-r"><img src={{onesource1.SourcePath}} alt="..."></span></td>
+                <td style="vertical-align:middle;">{{onesource1.SourceName}}</td>
+                <td style="vertical-align:middle;">{{onesource1.ApplyCount}}</td>
+                <td data-hide="phone" style="vertical-align:middle;">{{onesource1.ApplyTime}}</td>
+                <td data-hide="phone" style="vertical-align:middle;">{{onesource1.ExpectTime}}</td>
+                <td data-hide="phone" style="margin:0px;vertical-align:middle;">
+                <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="open('sm','{{onesource1.ApplyID}},{{onesource1.ApplyCount}},{{onesource1.SourceID}},{{onesource1.SourceCount}}')"  style="margin:0px;" ><i class="fa fa-circle"></i>归还</button>  
+                </td>
+            </tr>
+        </tbody>
+        </table>
+
+        <div class="form-group" >
+          <label style="margin-bottom: 30px;margin-top: 10px" class="col-sm-2 col-md-1 control-label">说明</label>
+          <div class="col-sm-10 col-md-11">
+            <textarea style="margin-bottom: 30px;margin-top: 10px" rows='5' maxlength="100" class="form-control"  ng-model="ApplyReason"  ng-disabled="true"></textarea>
+          </div>
+        </div> 
+        
+    <form class="form-horizontal ng-pristine ng-valid ng-valid-date ng-valid-required ng-valid-parse ng-valid-date-disabled">    
+    <div class="panel-body">
+        <!--<div class="form-group">
+          <label class="col-sm-2 col-md-1 control-label">归还时间</label>
+          <div class="col-sm-10 col-md-11">
+            <input type="date" id='expecttime' class="form-control" placeholder="请输入到期时间" ng-model="toaster.expecttime"  required>
+          </div>
+        </div> -->
+   </form>
+    </div>
+   <!--<button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="pop()"  style="margin-left: 30px;margin-bottom: 10px"><i class="fa fa-terminal"></i></button> -->
+
+  </div>
+</div>
+</div>
+
+</div> 
+</div>

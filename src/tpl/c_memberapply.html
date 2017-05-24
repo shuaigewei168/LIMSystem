@@ -1,0 +1,94 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+<div class="wrapper-md" ng-controller="MemberApplySourceController">
+ <div class="hbox hbox-auto-xs hbox-auto-sm"  ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  "> 
+
+<!--单独的消息-->
+<!-- modal -->
+<div ng-controller="ShowModalControler" class="panel b-a">
+    <script type="text/ng-template" id="myModalContent.html">
+      <div class="modal-header">
+          <h3 class="modal-title">确认删除?</h3>
+      </div>
+      <div class="modal-footer">                  
+          <button class="btn btn-default" ng-click="cancel()">取消删除</button>
+          <button class="btn btn-primary" ng-click="ok()">确认删除</button>
+      </div>
+    </script>
+</div>
+<!-- /modal -->
+<div class="wrapper-md"  ng-controller="ShowModalControler">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+     成员申请列表
+     <!--<i class="icon-action-undo" style='float: right'><a ui-sref="app.a_shownews({type:'all'})">返回</a></i>-->
+    </div>
+    <div class="panel-body b-light">
+            关键字搜索: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
+    </div>
+        <div>
+        <table class="table m-b-none" ui-jq="footable" data-filter="#filter" data-page-size="8">
+        <thead>
+            <tr>
+                <th data-hide="phone" >
+                    图片
+                </th>
+                <th >
+                    名称
+                </th>
+                <th >
+                    数量
+                </th>
+                <th data-hide="phone" >
+                    申请时间
+                </th>
+                <th>
+                    归还时间
+                </th>
+                <th data-hide="phone">
+                    申请理由
+                </th>
+                <th data-hide="phone" >
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat = " onesource1 in sources1">
+                <td data-hide="phone"><span class="pull-left thumb-md  m-r"><img src={{onesource1.SourcePath}} alt="..."></span></td>
+                <td style="vertical-align:middle;">{{onesource1.SourceName}}</td>
+                <td style="vertical-align:middle;">{{onesource1.ApplyCount}}</td>
+                <td data-hide="phone" style="vertical-align:middle;">{{onesource1.ApplyTime}}</td>
+                <td data-hide="phone" style="vertical-align:middle;">{{onesource1.ExpectTime}}</td>
+                <td data-hide="phone" style="vertical-align:middle;">{{onesource1.ApplyReason}}</td>   
+                <td data-hide="phone" style="margin:0px;vertical-align:middle;">
+                <!--<button class="btn m-b-xs btn-sm btn-info btn-addon" ui-sref="source.c_applysource({SourceID:'{{onesource1.SourceID}}'})"  style="margin:0px;" ng-disabled="{{onesource.SourceCount}}==0"><i class="fa fa-circle"></i>归还</button>                
+                <button class="btn m-b-xs btn-sm btn-success btn-addon" ui-sref="source.c_modifysource({SourceID:'{{onesource1.SourceID}}'})" style="margin:0px;"><i class="fa fa-terminal"></i>续借</button>-->
+                <button class="btn m-b-xs btn-sm btn-success btn-addon" ng-click="agree({{onesource1.SourceID}},{{onesource1.ApplyID}},{{onesource1.ApplyCount}},{{onesource1.SourceCount}})" style="margin:0px;"><i class="fa  fa-check-square"></i>同意</button>
+                <button class="btn m-b-xs btn-sm btn-danger btn-addon"  ng-click="refuse({{onesource1.SourceID}},{{onesource1.ApplyID}},{{onesource1.ApplyCount}},{{onesource1.SourceCount}})" style="margin:0px;"><i class="fa fa-minus-square"></i>拒绝</button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot class="hide-if-no-paging">
+            <tr>
+                <td colspan="5" class="text-center">
+                    <ul class="pagination"></ul>
+                </td>
+            </tr>
+        </tfoot>
+        </table>
+    </div>
+
+
+  </div>
+</div>
+    
+</div>
+
+</div> 
+</div>

@@ -15,6 +15,12 @@ if(@$_SESSION['Login']['autho'] == 1){
     $sql = "select * from `userinformation` where `ID`='".$_SESSION['Login']['loginID']."'";
     $result = $mysqli->query($sql);
     $userinfo = mysqli_fetch_array($result);
+
+    $sql = "select * from `emaillist` where `ReciverName` = '".$userinfo['UserName']."'";
+    $result = $mysqli->query($sql);
+    $emaildata = mysqli_fetch_assoc_all($result);
+    $userinfo['count'] = count($emaildata);
+
     $data['data'] = $userinfo;
     $ret=0;
 }else{

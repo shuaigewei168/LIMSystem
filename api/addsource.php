@@ -109,12 +109,12 @@ $size = formatBytes($file['size']);
 // if ($mysqli->affected_rows == 0) {
 //     errorreturn('数据库异常！', print_r($_POST,true));
 // }
-$imageupload_ImageInsert="insert into sourcelist(SourceName,SourceCount,SourceSize,SourcePath,SourceDestination,UploadTime,LoginID) values(?,?,?,?,?,?,?)";
+$imageupload_ImageInsert="insert into sourcelist(SourceName,SourceCount,TotalCount,SourceSize,SourcePath,SourceDestination,UploadTime,LoginID) values(?,?,?,?,?,?,?,?)";
 // if(!$stmt=$mysqli->prepare($simageupload_ImageInsertql)){
 //     errorreturn('添加图片数据失败');
 // }
 $stmt = $mysqli->prepare($imageupload_ImageInsert);
-$stmt->bind_param("sissssi",$sourcename,$sourcecount,$size,$url,$destination,$date,$loginid);
+$stmt->bind_param("siissssi",$sourcename,$sourcecount,$sourcecount,$size,$url,$destination,$date,$loginid);
 $stmt->execute();
 $stmt->close();
 header('Location: '.DomainNameRoot.'/#/source/c_sourcelist');
